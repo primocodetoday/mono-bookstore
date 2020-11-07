@@ -1,7 +1,8 @@
 import React from 'react';
 import { bookstoreAPI } from 'services/bookstoreAPI';
-import { Container, CardDeck, Col, Spinner } from 'react-bootstrap';
-import { BookCard } from 'components/BookCard/BookCard';
+import { CardDeck, Col } from 'react-bootstrap';
+import { BookCard } from 'components/BookCard';
+import Loader from 'components/Loader';
 
 export const Bookstore = () => {
   const [books, setBooks] = React.useState([]);
@@ -16,6 +17,7 @@ export const Bookstore = () => {
         })
         .catch((err) => console.error(err));
     }
+    // simulate delay
     setTimeout(() => {
       fetchBooks();
     }, 500);
@@ -32,15 +34,6 @@ export const Bookstore = () => {
   });
 
   return (
-    <Container style={{ minHeight: '80vh' }}>
-      {books.length ? (
-        <CardDeck>{booksArray}</CardDeck>
-      ) : (
-        // change to loader
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      )}
-    </Container>
+    <div>{books.length ? <CardDeck>{booksArray}</CardDeck> : <Loader />}</div>
   );
 };

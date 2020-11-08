@@ -1,15 +1,97 @@
 ﻿import React from 'react';
-import { Row } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
+import { bookstoreAPI } from 'services/bookstoreAPI';
+
+// initialOrderState = {
+//   'order:': [{ id: 0, quantity: 0 }],
+//   first_name: '',
+//   last_name: '',
+//   city: '',
+//   zip_code: '',
+// };
+
+// bakset scrach
 
 export const Basket = () => {
-  const { order } = React.useContext(OrderContext);
+  const { state, dispatch } = React.useContext(OrderContext);
+  const [basket, setBasket] = React.useState([]);
 
-  console.log(order);
+  React.useEffect(() => {
+    setBasket([]);
+    state.order.forEach((element) => {
+      bookstoreAPI
+        .get(`book/${element.id}`)
+        .then((response) => {
+          const { data } = response.data;
+          const { quantity } = element;
+          setBasket((prevState) => [...prevState, { ...data, quantity }]);
+        })
+        .catch((err) => console.error(err));
+    });
+  }, [state]);
+
+  const basketList = basket.length ? (
+    basket.map(({ title, quantity, price, id }) => {
+      return (
+        <Row
+          key={id}
+          className="mb-3 pt-3 border-bottom border-top border-dark"
+        >
+          <Col xs={9} className="h4">
+            <p>{title}</p>
+          </Col>
+          <Col xs={1}>
+            <p>{quantity}</p>
+          </Col>
+          <Col xs={1}>
+            <p>{price}</p>
+          </Col>
+          <Col xs={1}>
+            <Button
+              variant="light"
+              onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: id })}
+            >
+              <i className="fas fa-times" />
+            </Button>
+          </Col>
+        </Row>
+      );
+    })
+  ) : (
+    <p>Nie dodałeś jeszcze nic</p>
+  );
+
+  // Separate this and splice
+  const sum = basket.length
+    ? basket
+        .reduce((prev, acc) => {
+          return prev + acc.price;
+        }, 0)
+        .toString()
+    : 0;
 
   return (
-    <Row>
-      <p>Hello Im Basket</p>
-    </Row>
+    <>
+      <h4 className="mb-5">Koszyk</h4>
+      <Row className="mb-0 pt-0 ">
+        <Col xs={9}>
+          <p className="text-uppercase h6">tytuł</p>
+        </Col>
+        <Col xs={1} className="text-uppercase h6">
+          <p>ilość</p>
+        </Col>
+        <Col xs={1} className="text-uppercase h6">
+          <p>cena</p>
+        </Col>
+        <Col xs={1} className="text-uppercase h6">
+          <p>usuń</p>
+        </Col>
+      </Row>
+      {basketList}
+      <p className="text-right">
+        Wartość twoich zakupów to <strong>{sum} zł</strong>
+      </p>
+    </>
   );
 };

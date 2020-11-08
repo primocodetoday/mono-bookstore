@@ -7,15 +7,25 @@ import { Container } from 'react-bootstrap';
 import { TopNavbar } from 'components/TopNavbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { OrderContext } from 'context/OrderContext';
+import { orderReducer } from 'reducers/orderReducer';
+
+const initialOrderState = {
+  order: [
+    { id: 457, quantity: 1 },
+    { id: 905, quantity: 5 },
+  ],
+  first_name: '',
+  last_name: '',
+  city: '',
+  zip_code: '',
+};
 
 const App = () => {
-  const [order, setOrder] = React.useState({
-    message: 'hello im context and im everywhere',
-  });
+  const [state, dispatch] = React.useReducer(orderReducer, initialOrderState);
 
   return (
     <Container>
-      <OrderContext.Provider value={{ order, setOrder }}>
+      <OrderContext.Provider value={{ state, dispatch }}>
         <BrowserRouter>
           <TopNavbar />
           <Switch>

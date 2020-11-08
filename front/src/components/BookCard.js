@@ -1,15 +1,18 @@
 ﻿import React from 'react';
 import { Button, Row, Col, Media } from 'react-bootstrap';
+// import { OrderContext } from 'context/OrderContext';
 
-// author: 'M. Karpiński, M. Dobrowolska, M. Braun, J. Lech';
+// author:
 // cover_url: 'http://localhost:3001/static/cover/book/457.jpg';
 // currency: 'PLN';
 // id: 457;
 // pages: 280;
-// price: 3200;
-// title: 'Matematyka 1. Podręcznik. Zakres podstawowy';
+// price:
+// title: '
 
 export const BookCard = ({ book }) => {
+  // const { dispatch } = React.useContext(OrderContext);
+
   return (
     <div className=" card p-3 mx-auto mb-3 d-flex align-items-stretch ">
       <Row xs={1} sm={2} className="px-2 ">

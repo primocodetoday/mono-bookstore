@@ -23,8 +23,6 @@ export const Bookstore = () => {
     }, 500);
   }, []);
 
-  console.log(books);
-
   const booksArray = books.map((book) => {
     return (
       <Col xs={12} md={6} xl={4} className="mb-3" key={book.id}>
@@ -33,5 +31,10 @@ export const Bookstore = () => {
     );
   });
 
-  return <div>{books.length ? <Row>{booksArray}</Row> : <Loader />}</div>;
+  return (
+    <div>
+      <h4 className="mb-4">Sklep</h4>
+      {books.length ? <Row>{booksArray}</Row> : <Loader />}
+    </div>
+  );
 };

@@ -2,6 +2,8 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import './styles/basketStyles.css';
 
 export const Basket = () => {
   const { state, dispatch } = React.useContext(OrderContext);
@@ -22,36 +24,35 @@ export const Basket = () => {
     });
   }, [state]);
 
-  const basketList = basket.length ? (
-    basket.map(({ title, quantity, price, id }) => {
-      return (
-        <Row
-          key={id}
-          className="mb-3 pt-3 border-bottom border-top border-dark"
-        >
-          <Col xs={9} className="h4">
-            <p>{title}</p>
-          </Col>
-          <Col xs={1}>
-            <p>{quantity}</p>
-          </Col>
-          <Col xs={1}>
-            <p>{price}</p>
-          </Col>
-          <Col xs={1}>
-            <Button
-              variant="light"
-              onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: { id } })}
-            >
-              <i className="fas fa-times" />
-            </Button>
-          </Col>
-        </Row>
-      );
-    })
-  ) : (
-    <p>Nie dodałeś jeszcze nic</p>
-  );
+  const basketList = basket.length
+    ? basket.map(({ title, quantity, price, id }) => {
+        return (
+          <CSSTransition key={id} timeout={500} classNames="item">
+            <Row className="mb-3 pt-3 border-bottom border-top border-dark">
+              <Col xs={9} className="h4">
+                <p>{title}</p>
+              </Col>
+              <Col xs={1}>
+                <p>{quantity}</p>
+              </Col>
+              <Col xs={1}>
+                <p>{price}</p>
+              </Col>
+              <Col xs={1}>
+                <Button
+                  variant="light"
+                  onClick={() =>
+                    dispatch({ type: 'REMOVE_BOOK', payload: { id } })
+                  }
+                >
+                  <i className="fas fa-times" />
+                </Button>
+              </Col>
+            </Row>
+          </CSSTransition>
+        );
+      })
+    : null;
 
   // Separate this and splice
   const sum = basket.length
@@ -79,7 +80,8 @@ export const Basket = () => {
           <p>usuń</p>
         </Col>
       </Row>
-      {basketList}
+      <TransitionGroup>{basketList}</TransitionGroup>
+
       <p className="text-right">
         Wartość twoich zakupów to <strong>{sum} zł</strong>
       </p>

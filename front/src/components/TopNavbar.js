@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 export const TopNavbar = () => {
@@ -11,10 +11,6 @@ export const TopNavbar = () => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Form inline className="ml-5">
-          <Button variant="outline-success">Search</Button>
-          <FormControl type="text" placeholder="Search" className="ml-sm-2" />
-        </Form>
         <Nav className="ml-auto">
           <Nav.Link as={NavLink} exact to="/">
             Sklep

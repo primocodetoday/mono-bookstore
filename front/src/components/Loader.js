@@ -3,8 +3,8 @@ import { Spinner } from 'react-bootstrap';
 
 const Loader = () => {
   return (
-    <div className="d-flex">
-      <Spinner animation="border" role="status">
+    <div style={{ height: '80vh' }} className="d-flex">
+      <Spinner className="mx-auto my-auto" animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner>
     </div>

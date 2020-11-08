@@ -1,6 +1,6 @@
 import React from 'react';
 import { bookstoreAPI } from 'services/bookstoreAPI';
-import { CardDeck, Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { BookCard } from 'components/BookCard';
 import Loader from 'components/Loader';
 
@@ -27,13 +27,11 @@ export const Bookstore = () => {
 
   const booksArray = books.map((book) => {
     return (
-      <Col xs={12} lg={6} key={book.id}>
+      <Col xs={12} md={6} xl={4} className="mb-3" key={book.id}>
         <BookCard book={book} />
       </Col>
     );
   });
 
-  return (
-    <div>{books.length ? <CardDeck>{booksArray}</CardDeck> : <Loader />}</div>
-  );
+  return <div>{books.length ? <Row>{booksArray}</Row> : <Loader />}</div>;
 };

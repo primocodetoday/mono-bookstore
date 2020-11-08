@@ -8,17 +8,7 @@ import { TopNavbar } from 'components/TopNavbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { OrderContext } from 'context/OrderContext';
 import { orderReducer } from 'reducers/orderReducer';
-
-const initialOrderState = {
-  order: [
-    { id: 457, quantity: 1 },
-    { id: 905, quantity: 5 },
-  ],
-  first_name: '',
-  last_name: '',
-  city: '',
-  zip_code: '',
-};
+import { initialOrderState } from 'context/initialOrderState';
 
 const App = () => {
   const [state, dispatch] = React.useReducer(orderReducer, initialOrderState);

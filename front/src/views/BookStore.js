@@ -6,6 +6,7 @@ import Loader from 'components/Loader';
 
 export const Bookstore = () => {
   const [books, setBooks] = React.useState([]);
+  // const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
     async function fetchBooks() {

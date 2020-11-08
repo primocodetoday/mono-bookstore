@@ -3,16 +3,6 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 
-// initialOrderState = {
-//   'order:': [{ id: 0, quantity: 0 }],
-//   first_name: '',
-//   last_name: '',
-//   city: '',
-//   zip_code: '',
-// };
-
-// bakset scrach
-
 export const Basket = () => {
   const { state, dispatch } = React.useContext(OrderContext);
   const [basket, setBasket] = React.useState([]);
@@ -27,6 +17,7 @@ export const Basket = () => {
           const { quantity } = element;
           setBasket((prevState) => [...prevState, { ...data, quantity }]);
         })
+        // eslint-disable-next-line no-console
         .catch((err) => console.error(err));
     });
   }, [state]);
@@ -50,7 +41,7 @@ export const Basket = () => {
           <Col xs={1}>
             <Button
               variant="light"
-              onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: id })}
+              onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: { id } })}
             >
               <i className="fas fa-times" />
             </Button>

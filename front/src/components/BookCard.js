@@ -1,6 +1,7 @@
-﻿import React from 'react';
+﻿/* eslint-disable camelcase */
+import React from 'react';
 import { Button, Row, Col, Media } from 'react-bootstrap';
-// import { OrderContext } from 'context/OrderContext';
+import { OrderContext } from 'context/OrderContext';
 
 // author:
 // cover_url: 'http://localhost:3001/static/cover/book/457.jpg';
@@ -11,17 +12,19 @@ import { Button, Row, Col, Media } from 'react-bootstrap';
 // title: '
 
 export const BookCard = ({ book }) => {
-  // const { dispatch } = React.useContext(OrderContext);
+  const { dispatch } = React.useContext(OrderContext);
+
+  const { id, title, cover_url, author, pages } = book;
 
   return (
-    <div className=" card p-3 mx-auto mb-3 d-flex align-items-stretch ">
+    <div className=" card p-3 mx-auto mb-3 d-flex align-items-stretch h-100">
       <Row xs={1} sm={2} className="px-2 ">
         <Col sm={5}>
           <Media>
             <img
               className="img-fluid rounded border mx-auto mb-3"
-              src={book.cover_url}
-              alt={book.title}
+              src={cover_url}
+              alt={title}
             />
           </Media>
         </Col>
@@ -30,14 +33,20 @@ export const BookCard = ({ book }) => {
             <p className="h6 mx-auto mb-2 text-uppercase">{book.title}</p>
           </div>
           <p>
-            Autorzy: <strong>{book.author}</strong>
+            Autorzy: <strong>{author}</strong>
           </p>
           <p>
-            Liczba stron: <strong>{book.pages}</strong>
+            Liczba stron: <strong>{pages}</strong>
           </p>
         </Col>
       </Row>
-      <Button className="ml-auto mt-auto" variant="outline-primary">
+      <Button
+        className="ml-auto mt-auto"
+        variant="outline-primary"
+        onClick={() =>
+          dispatch({ type: 'ADD_BOOK', payload: { id, quantity: 1 } })
+        }
+      >
         Do koszyka
       </Button>
     </div>

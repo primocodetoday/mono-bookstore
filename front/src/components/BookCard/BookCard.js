@@ -14,7 +14,7 @@ import { SnackBar } from 'components/SnackBar/SnackBar';
 
 export const BookCard = ({ book }) => {
   const { dispatch } = React.useContext(OrderContext);
-  const [show, setShow] = React.useState(false);
+  const [isAdded, setIsAdded] = React.useState(false);
 
   const { id, title, cover_url, author, pages } = book;
 
@@ -43,12 +43,12 @@ export const BookCard = ({ book }) => {
         variant="warning"
         onClick={() => {
           dispatch({ type: 'ADD_BOOK', payload: { id, quantity: 1 } });
-          setShow(true);
+          setIsAdded(true);
         }}
       >
         Do koszyka
       </Button>
-      <SnackBar toast={show} setToast={setShow}>
+      <SnackBar toast={isAdded} setToast={setIsAdded} color="success">
         Pozycja została dodana
       </SnackBar>
     </div>

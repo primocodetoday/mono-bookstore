@@ -6,20 +6,20 @@ import { OrderContext } from 'context/OrderContext';
 export const TopNav = () => {
   const { state } = React.useContext(OrderContext);
   return (
-    <Navbar bg="warning" variant="dark" expand="sm" className="mb-4" sticky="top">
+    <Navbar bg="warning" variant="dark" expand="sm" className="mb-4 " sticky="top">
       <Navbar.Brand as={NavLink} to="/">
         <i className="fas fa-book-open mr-3" />
         <strong className="text-uppercase">Księgarnia</strong>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          <Nav.Link className="text-dark ml-auto" as={NavLink} exact to="/">
+        <Nav className="ml-auto align-items-center h5">
+          <Nav.Link className="text-light ml-auto mr-4 text-uppercase font-weight-bolder" as={NavLink} exact to="/">
             Sklep
           </Nav.Link>
-          <Nav.Link className="text-dark ml-auto" as={NavLink} to="/basket">
+          <Nav.Link className="text-light ml-auto text-uppercase font-weight-bolder" as={NavLink} to="/basket">
             Koszyk
-            <Badge className="ml-2 badge-secondary">{state.order.length}</Badge>
+            <Badge className="ml-2 badge-success">{state.order.length}</Badge>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

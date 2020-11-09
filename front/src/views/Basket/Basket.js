@@ -1,21 +1,18 @@
 ﻿import React from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Col, Button, ListGroup } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
-import { Header } from 'components';
+import { Header, BasketHeader, BasketItem } from 'components';
 import { Link } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './styles/basketStyles.css';
-
-function priceWithCommas(num) {
-  const str = num.toString();
-  return `${str.slice(0, -2)},${str.slice(-2, -1)}0`;
-}
+import { priceWithComma } from 'helpers/priceWithComma';
+import { summaryBalance } from 'helpers/summaryBalance';
 
 export const Basket = () => {
-  const { state, dispatch } = React.useContext(OrderContext);
+  const { state } = React.useContext(OrderContext);
   const [basket, setBasket] = React.useState([]);
 
+  // Huge state and book combiner
   React.useEffect(() => {
     const result = [];
     const items = state.order;
@@ -35,12 +32,10 @@ export const Basket = () => {
         ),
       );
     };
-
     const arrayFill = Promise.all(items.map(shot)).then((data) => {
       result.push(data);
       return Promise.all(data.map(shot));
     });
-
     arrayFill
       .then((data) => {
         setBasket(data);
@@ -51,66 +46,33 @@ export const Basket = () => {
 
   const basketList = basket.length
     ? basket.map(({ title, quantity, price, id }) => {
-        return (
-          <CSSTransition key={id} timeout={500} classNames="item">
-            <Row className="mb-3 pt-3 border-bottom border-top border-dark">
-              <Col xs={9}>
-                <p className="h5">{title}</p>
-              </Col>
-              <Col xs={1}>
-                <p>{quantity}</p>
-              </Col>
-              <Col xs={1}>
-                <p>{priceWithCommas(price)} zł</p>
-              </Col>
-              <Col xs={1}>
-                <Button variant="light" onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: { id } })}>
-                  <i className="fas fa-times" />
-                </Button>
-              </Col>
-            </Row>
-          </CSSTransition>
-        );
+        return <BasketItem key={id} title={title} quantity={quantity} price={price} id={id} />;
       })
     : null;
-
-  // TODO Separate this and splice, write function who add coma
-  const sum = (arr) => {
-    if (arr.length) {
-      return arr.reduce((prev, acc) => prev + acc.price * acc.quantity, 0);
-    }
-    return 0;
-  };
 
   return (
     <>
       <Header>Koszyk</Header>
-      {!basket.length && <p>Twoje zamówienie jest puste. Dodaj pozycje na stronie sklepu.</p>}
-      <Row xs={4} className="mb-0 pt-0 ">
-        <Col xs={3} md={9}>
-          <p className="text-uppercase h6">tytuł</p>
-        </Col>
-        <Col xs={1} className="text-uppercase h6">
-          <p>ilość</p>
-        </Col>
-        <Col xs={1} className="text-uppercase h6">
-          <p>cena</p>
-        </Col>
-        <Col xs={1} className="text-uppercase h6">
-          <p>usuń</p>
-        </Col>
-      </Row>
-      <TransitionGroup>{basketList}</TransitionGroup>
-      <div className="mt-5 d-flex justify-content-end align-items-center">
-        <p className="">
-          Wartość twoich zakupów to <strong>{priceWithCommas(sum(basket))} zł</strong>
+      {!basket.length && (
+        <p className="mb-4 text-center">
+          Nie dodałeś jeszcze nic do koszyka. Dodaj pozycje na stronie <Link to="/shop/1">sklepu</Link>
         </p>
-        {basket.length ? (
-          <Button className="ml-4" variant="warning" as={Link} to="/order">
-            Zamawiam
-          </Button>
-        ) : null}
-      </div>
+      )}
+      <Col>
+        <BasketHeader />
+        <ListGroup as="ul">{basketList}</ListGroup>
+        <div className="mt-3 d-flex justify-content-end align-items-center">
+          <p className="h6">
+            Wartość twoich zakupów to{' '}
+            <strong>{summaryBalance(basket) ? priceWithComma(summaryBalance(basket)) : 0} zł</strong>
+          </p>
+          {basket.length ? (
+            <Button className="ml-4 font-weight-bold text-light" variant="warning" as={Link} to="/order">
+              Zamawiam
+            </Button>
+          ) : null}
+        </div>
+      </Col>
     </>
   );
 };

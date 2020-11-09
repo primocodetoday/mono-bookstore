@@ -38,7 +38,7 @@ export const Bookstore = () => {
 
   const booksArray = books.map((book) => {
     return (
-      <Col xs={12} md={6} xl={4} className="mb-3" key={book.id}>
+      <Col xs={12} md={6} lg={4} className="mb-3" key={book.id}>
         <BookCard book={book} />
       </Col>
     );

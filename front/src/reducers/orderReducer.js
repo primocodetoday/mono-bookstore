@@ -1,11 +1,4 @@
-﻿/* eslint-disable no-console */
-// initialOrderState = {
-//   order: [{ id: 0, quantity: 0 }],
-//   first_name: '',
-//   last_name: '',
-//   city: '',
-//   zip_code: '',
-// };
+﻿import { initialOrderState } from 'context/initialOrderState';
 
 export const deepStateAdd = (state, action) => {
   return state.order.map((item) => {
@@ -44,7 +37,16 @@ export const orderReducer = (state, action) => {
       }
       console.log('New Book added');
       return { ...state, order: [...state.order, action.payload] };
-
+    case 'FIRST_NAME_CHANGE':
+      return { ...state, first_name: action.payload };
+    case 'LAST_NAME_CHANGE':
+      return { ...state, last_name: action.payload };
+    case 'CITY_CHANGE':
+      return { ...state, city: action.payload };
+    case 'ZIP_CODE_CHANGE':
+      return { ...state, zip_code: action.payload };
+    case 'RESET_ORDER':
+      return { ...initialOrderState };
     default:
       throw new Error();
   }

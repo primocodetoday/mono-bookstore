@@ -29,6 +29,7 @@ export const Basket = () => {
         ),
       );
     };
+
     const arrayFill = Promise.all(items.map(shot)).then((data) => {
       result.push(data);
       return Promise.all(data.map(shot));
@@ -79,6 +80,7 @@ export const Basket = () => {
   return (
     <>
       <h4 className="mb-5">Koszyk</h4>
+      {!basket.length && <p>Twoje zamówienie jest puste. Dodaj pozycje na stronie sklepu.</p>}
       <Row className="mb-0 pt-0 ">
         <Col xs={9}>
           <p className="text-uppercase h6">tytuł</p>

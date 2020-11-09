@@ -42,7 +42,7 @@ export const BookCard = ({ book }) => {
       </Row>
       <Button
         className="ml-auto mt-auto"
-        variant="outline-primary"
+        variant="warning"
         onClick={() =>
           dispatch({ type: 'ADD_BOOK', payload: { id, quantity: 1 } })
         }

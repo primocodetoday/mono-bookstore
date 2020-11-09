@@ -2,6 +2,7 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
+import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './styles/basketStyles.css';
 
@@ -9,6 +10,7 @@ export const Basket = () => {
   const { state, dispatch } = React.useContext(OrderContext);
   const [basket, setBasket] = React.useState([]);
 
+  // TODO Refactor this
   React.useEffect(() => {
     setBasket([]);
     state.order.forEach((element) => {
@@ -54,11 +56,11 @@ export const Basket = () => {
       })
     : null;
 
-  // Separate this and splice
+  // TODO Separate this and splice, write function who add coma
   const sum = basket.length
     ? basket
         .reduce((prev, acc) => {
-          return prev + acc.price;
+          return prev + acc.price * acc.quantity;
         }, 0)
         .toString()
     : 0;
@@ -81,10 +83,16 @@ export const Basket = () => {
         </Col>
       </Row>
       <TransitionGroup>{basketList}</TransitionGroup>
-
-      <p className="text-right">
-        Wartość twoich zakupów to <strong>{sum} zł</strong>
-      </p>
+      <div className="d-flex justify-content-end align-items-center">
+        <p className="">
+          Wartość twoich zakupów to <strong>{sum} zł</strong>
+        </p>
+        {basket.length ? (
+          <Button className="ml-4" variant="warning" as={Link} to="/order">
+            Zamawiam
+          </Button>
+        ) : null}
+      </div>
     </>
   );
 };

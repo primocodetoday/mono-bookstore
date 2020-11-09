@@ -28,11 +28,7 @@ export const deepStateSub = (state, action) => {
 export const orderReducer = (state, action) => {
   switch (action.type) {
     case 'REMOVE_BOOK':
-      if (
-        state.order.find(
-          (item) => item.id === action.payload.id && item.quantity > 1,
-        )
-      ) {
+      if (state.order.find((item) => item.id === action.payload.id && item.quantity > 1)) {
         console.log('Book in order, subtracting quantity');
         return { ...state, order: deepStateSub(state, action) };
       }

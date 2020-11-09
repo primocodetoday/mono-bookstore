@@ -1,10 +1,12 @@
 ﻿import React from 'react';
-import { Row } from 'react-bootstrap';
+import {} from 'react-bootstrap';
+// import { OrderContext } from 'context/OrderContext';
 
 export const Order = () => {
+  // const { state, dispatch } = React.useContext(OrderContext);
   return (
-    <Row>
+    <div>
       <p>Hello Im order</p>
-    </Row>
+    </div>
   );
 };

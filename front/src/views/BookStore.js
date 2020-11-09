@@ -25,7 +25,7 @@ export const Bookstore = () => {
     // simulate delay
     setTimeout(() => {
       fetchBooks();
-    }, 500);
+    }, 250);
   }, [page]);
 
   const history = useHistory();

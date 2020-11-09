@@ -1,10 +1,12 @@
 ﻿import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Badge } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { OrderContext } from 'context/OrderContext';
 
 export const TopNavbar = () => {
+  const { state } = React.useContext(OrderContext);
   return (
-    <Navbar bg="light" variant="light" expand="lg" className="mb-3">
+    <Navbar bg="warning" variant="dark" expand="sm" className="mb-3" sticky="top">
       <Navbar.Brand as={NavLink} to="/">
         <i className="fas fa-book-open mr-3" />
         <strong className="text-uppercase">Księgarnia</strong>
@@ -12,11 +14,12 @@ export const TopNavbar = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link as={NavLink} exact to="/">
+          <Nav.Link className="text-dark ml-auto" as={NavLink} exact to="/">
             Sklep
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/basket">
+          <Nav.Link className="text-dark ml-auto" as={NavLink} to="/basket">
             Koszyk
+            <Badge className="ml-2 badge-primary">{state.order.length}</Badge>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

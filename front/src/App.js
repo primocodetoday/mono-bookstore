@@ -15,8 +15,8 @@ const App = () => {
   const [state, dispatch] = React.useReducer(orderReducer, initialOrderState);
 
   return (
-    <Container>
-      <OrderContext.Provider value={{ state, dispatch }}>
+    <OrderContext.Provider value={{ state, dispatch }}>
+      <Container>
         <BrowserRouter>
           <TopNavbar />
           <Switch>
@@ -30,8 +30,8 @@ const App = () => {
             <Route path="*" component={Page404} />
           </Switch>
         </BrowserRouter>
-      </OrderContext.Provider>
-    </Container>
+      </Container>
+    </OrderContext.Provider>
   );
 };
 

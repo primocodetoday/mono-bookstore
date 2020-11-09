@@ -1,4 +1,5 @@
-﻿import { initialOrderState } from 'context/initialOrderState';
+﻿/* eslint-disable no-console */
+import { initialOrderState } from 'context/OrderContext';
 
 export const deepStateAdd = (state, action) => {
   return state.order.map((item) => {

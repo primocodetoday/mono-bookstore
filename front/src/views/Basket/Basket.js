@@ -54,8 +54,8 @@ export const Basket = () => {
         return (
           <CSSTransition key={id} timeout={500} classNames="item">
             <Row className="mb-3 pt-3 border-bottom border-top border-dark">
-              <Col xs={9} className="h4">
-                <p>{title}</p>
+              <Col xs={9}>
+                <p className="h5">{title}</p>
               </Col>
               <Col xs={1}>
                 <p>{quantity}</p>
@@ -75,18 +75,19 @@ export const Basket = () => {
     : null;
 
   // TODO Separate this and splice, write function who add coma
-  const sum = basket.length
-    ? basket.reduce((prev, acc) => {
-        return prev + acc.price * acc.quantity;
-      }, 0)
-    : 0;
+  const sum = (arr) => {
+    if (arr.length) {
+      return arr.reduce((prev, acc) => prev + acc.price * acc.quantity, 0);
+    }
+    return 0;
+  };
 
   return (
     <>
       <Header>Koszyk</Header>
       {!basket.length && <p>Twoje zamówienie jest puste. Dodaj pozycje na stronie sklepu.</p>}
-      <Row className="mb-0 pt-0 ">
-        <Col xs={9}>
+      <Row xs={4} className="mb-0 pt-0 ">
+        <Col xs={3} md={9}>
           <p className="text-uppercase h6">tytuł</p>
         </Col>
         <Col xs={1} className="text-uppercase h6">
@@ -102,7 +103,7 @@ export const Basket = () => {
       <TransitionGroup>{basketList}</TransitionGroup>
       <div className="mt-5 d-flex justify-content-end align-items-center">
         <p className="">
-          Wartość twoich zakupów to <strong>{priceWithCommas(sum)} zł</strong>
+          Wartość twoich zakupów to <strong>{priceWithCommas(sum(basket))} zł</strong>
         </p>
         {basket.length ? (
           <Button className="ml-4" variant="warning" as={Link} to="/order">

@@ -2,9 +2,15 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
+import { Header } from 'components';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './styles/basketStyles.css';
+
+function priceWithCommas(num) {
+  const str = num.toString();
+  return `${str.slice(0, -2)},${str.slice(-2, -1)}0`;
+}
 
 export const Basket = () => {
   const { state, dispatch } = React.useContext(OrderContext);
@@ -55,7 +61,7 @@ export const Basket = () => {
                 <p>{quantity}</p>
               </Col>
               <Col xs={1}>
-                <p>{price}</p>
+                <p>{priceWithCommas(price)} zł</p>
               </Col>
               <Col xs={1}>
                 <Button variant="light" onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: { id } })}>
@@ -70,16 +76,14 @@ export const Basket = () => {
 
   // TODO Separate this and splice, write function who add coma
   const sum = basket.length
-    ? basket
-        .reduce((prev, acc) => {
-          return prev + acc.price * acc.quantity;
-        }, 0)
-        .toString()
+    ? basket.reduce((prev, acc) => {
+        return prev + acc.price * acc.quantity;
+      }, 0)
     : 0;
 
   return (
     <>
-      <h4 className="mb-5">Koszyk</h4>
+      <Header>Koszyk</Header>
       {!basket.length && <p>Twoje zamówienie jest puste. Dodaj pozycje na stronie sklepu.</p>}
       <Row className="mb-0 pt-0 ">
         <Col xs={9}>
@@ -96,9 +100,9 @@ export const Basket = () => {
         </Col>
       </Row>
       <TransitionGroup>{basketList}</TransitionGroup>
-      <div className="d-flex justify-content-end align-items-center">
+      <div className="mt-5 d-flex justify-content-end align-items-center">
         <p className="">
-          Wartość twoich zakupów to <strong>{sum} zł</strong>
+          Wartość twoich zakupów to <strong>{priceWithCommas(sum)} zł</strong>
         </p>
         {basket.length ? (
           <Button className="ml-4" variant="warning" as={Link} to="/order">

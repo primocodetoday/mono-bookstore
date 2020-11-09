@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button, Row, Col, Media } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
+import { SnackBar } from 'components/SnackBar/SnackBar';
 
 // author:
 // cover_url: 'http://localhost:3001/static/cover/book/457.jpg';
@@ -13,6 +14,7 @@ import { OrderContext } from 'context/OrderContext';
 
 export const BookCard = ({ book }) => {
   const { dispatch } = React.useContext(OrderContext);
+  const [show, setShow] = React.useState(false);
 
   const { id, title, cover_url, author, pages } = book;
 
@@ -21,11 +23,7 @@ export const BookCard = ({ book }) => {
       <Row xs={1} sm={2} className="px-2 ">
         <Col sm={5}>
           <Media>
-            <img
-              className="img-fluid rounded border mx-auto mb-3"
-              src={cover_url}
-              alt={title}
-            />
+            <img className="img-fluid rounded border mx-auto mb-3" src={cover_url} alt={title} />
           </Media>
         </Col>
         <Col sm={7} className="d-flex flex-column justify-content-between">
@@ -43,12 +41,16 @@ export const BookCard = ({ book }) => {
       <Button
         className="ml-auto mt-auto"
         variant="warning"
-        onClick={() =>
-          dispatch({ type: 'ADD_BOOK', payload: { id, quantity: 1 } })
-        }
+        onClick={() => {
+          dispatch({ type: 'ADD_BOOK', payload: { id, quantity: 1 } });
+          setShow(true);
+        }}
       >
         Do koszyka
       </Button>
+      <SnackBar toast={show} setToast={setShow}>
+        Pozycja została dodana
+      </SnackBar>
     </div>
   );
 };

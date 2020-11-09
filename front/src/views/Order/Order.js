@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
+import { Header } from 'components';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { OrderContext } from 'context/OrderContext';
 import { Link } from 'react-router-dom';
@@ -35,7 +36,7 @@ export const Order = () => {
 
   return (
     <div>
-      <h4 className="mb-3 ">Zamówienie</h4>
+      <Header>Zamówienie</Header>
       {/* {backEndValidate ? <p>{backEndValidate}</p> : null} */}
       {state.order.length ? (
         <Formik

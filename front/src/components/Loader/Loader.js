@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { Spinner } from 'react-bootstrap';
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <div style={{ height: '80vh' }} className="d-flex">
       <Spinner className="mx-auto my-auto" animation="border" role="status">
@@ -10,5 +10,3 @@ const Loader = () => {
     </div>
   );
 };
-
-export default Loader;

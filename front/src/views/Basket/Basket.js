@@ -10,20 +10,36 @@ export const Basket = () => {
   const { state, dispatch } = React.useContext(OrderContext);
   const [basket, setBasket] = React.useState([]);
 
-  // TODO Refactor this
   React.useEffect(() => {
-    setBasket([]);
-    state.order.forEach((element) => {
-      bookstoreAPI
-        .get(`book/${element.id}`)
-        .then((response) => {
-          const { data } = response.data;
-          const { quantity } = element;
-          setBasket((prevState) => [...prevState, { ...data, quantity }]);
-        })
-        // eslint-disable-next-line no-console
-        .catch((err) => console.error(err));
+    const result = [];
+    const items = state.order;
+
+    const shot = (element) => {
+      return new Promise((resolve) =>
+        resolve(
+          bookstoreAPI
+            .get(`book/${element.id}`)
+            .then((response) => {
+              const { data } = response.data;
+              const { quantity } = element;
+              return { ...data, quantity };
+            })
+            // eslint-disable-next-line no-console
+            .catch((err) => console.error(err)),
+        ),
+      );
+    };
+    const arrayFill = Promise.all(items.map(shot)).then((data) => {
+      result.push(data);
+      return Promise.all(data.map(shot));
     });
+
+    arrayFill
+      .then((data) => {
+        setBasket(data);
+      })
+      // eslint-disable-next-line no-console
+      .catch((err) => console.error(err));
   }, [state]);
 
   const basketList = basket.length
@@ -41,12 +57,7 @@ export const Basket = () => {
                 <p>{price}</p>
               </Col>
               <Col xs={1}>
-                <Button
-                  variant="light"
-                  onClick={() =>
-                    dispatch({ type: 'REMOVE_BOOK', payload: { id } })
-                  }
-                >
+                <Button variant="light" onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: { id } })}>
                   <i className="fas fa-times" />
                 </Button>
               </Col>

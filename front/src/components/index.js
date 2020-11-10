@@ -1,4 +1,4 @@
-﻿export { BasketHeader } from './BasketHeader/BaskerHeader';
+﻿export { BasketHeader } from './BasketHeader/BasketHeader';
 export { BasketItem } from './BasketItem/BasketItem';
 export { BookCard } from './BookCard/BookCard';
 export { Header } from './Header/Header';

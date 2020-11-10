@@ -45,7 +45,7 @@ export const OrderForm = ({ setOrderPlaced }) => {
   });
 
   return (
-    <Col as="main">
+    <Col as="section">
       {state.order.length ? (
         <Formik
           validationSchema={orderSchema}
@@ -130,14 +130,14 @@ export const OrderForm = ({ setOrderPlaced }) => {
                   {errors.zip_code && touched.zip_code && errors.zip_code}
                 </Form.Control.Feedback>
               </Form.Group>
-              <Button variant="warning" type="submit" className="text-uppercase font-weight-bolder text-light mx-auto">
+              <Button variant="outline-warning" type="submit" className="text-uppercase font-weight-bolder  mx-auto">
                 Zamawiam i płacę
               </Button>
             </Form>
           )}
         </Formik>
       ) : (
-        <p className="text-success">
+        <p className="text-success text-uppercase font-weight-bolder text-center">
           Twoje zamówienie zostało wysłane. <Link to="/shop/1">Wróc</Link> na stronę sklepu
         </p>
       )}

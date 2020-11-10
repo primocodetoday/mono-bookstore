@@ -4,7 +4,7 @@ import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 
 export const BasketHeader = () => {
   return (
-    <Row className="mb-2 mx-0 text-muted text-uppercase text-center align-items-center">
+    <Row className="mb-2 px-3 text-muted text-uppercase text-center align-items-center">
       <Col xs={grid.col1.xs} sm={grid.col1.sm} md={grid.col1.md} className="border-right text-left pl-2">
         <p className="h6">tytuł</p>
       </Col>

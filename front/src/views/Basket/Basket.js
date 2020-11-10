@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { Col, Button, ListGroup } from 'react-bootstrap';
+import { Col, ListGroup, Button } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { Header, BasketHeader, BasketItem } from 'components';
@@ -51,14 +51,14 @@ export const Basket = () => {
     : null;
 
   return (
-    <>
+    <Col xs={12} md={10} lg={10} xl={8} className="px-1 mx-auto">
       <Header>Koszyk</Header>
       {!basket.length ? (
-        <p className="mb-4 text-center">
+        <p className="mb-4 text-uppercase font-weight-bolder text-center">
           Nie dodałeś jeszcze nic do koszyka. Dodaj pozycje na stronie <Link to="/shop/1">sklepu</Link>
         </p>
       ) : (
-        <Col className="px-0 mb-5">
+        <Col as="section" className="px-0 mb-5">
           <BasketHeader />
           <ListGroup as="ul">{basketList}</ListGroup>
           <div className="mt-2 flex-column d-flex justify-content-end align-items-end">
@@ -66,19 +66,17 @@ export const Basket = () => {
               Wartość twoich zakupów to{' '}
               <strong>{summaryBalance(basket) ? priceWithComma(summaryBalance(basket)) : 0} zł</strong>
             </p>
-            {basket.length ? (
-              <Button
-                className="mt-2 text-uppercase font-weight-bolder text-light"
-                variant="warning"
-                as={Link}
-                to="/order"
-              >
-                Zamawiam
-              </Button>
-            ) : null}
+            <Button
+              className="mt-2 text-uppercase font-weight-bolder ml-auto"
+              variant="outline-warning"
+              as={Link}
+              to="/order"
+            >
+              Zamawiam
+            </Button>
           </div>
         </Col>
       )}
-    </>
+    </Col>
   );
 };

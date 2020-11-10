@@ -7,12 +7,10 @@ import { SnackBar } from 'components';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
-export const OrderForm = ({ setWasSubmitted }) => {
+export const OrderForm = ({ setOrderPlaced }) => {
   const { state, dispatch } = React.useContext(OrderContext);
   const [backEndPass, setBackPass] = React.useState(false);
   const [backEndRefuse, setBackRefuse] = React.useState(false);
-
-  console.log(state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +18,7 @@ export const OrderForm = ({ setWasSubmitted }) => {
       await bookstoreAPI
         .post('order', state)
         .then(() => {
-          setWasSubmitted(true);
+          setOrderPlaced(true);
           setBackPass(true);
           dispatch({ type: 'RESET_ORDER' });
         })
@@ -30,20 +28,21 @@ export const OrderForm = ({ setWasSubmitted }) => {
           setBackRefuse(true);
         });
     }
-    // simulate delay
     orderBooks();
   };
-
+  // orderSchema rules based on backend module
   const orderSchema = Yup.object({
-    first_Name: Yup.string().min(4, 'Imię zbyt krótkie').max(50, 'Imię zbyt długie').required('Podaj imię'),
-    last_Name: Yup.string().min(5, 'Nazwisko zbyt krótkie').max(50, 'Nazwisko zbyt długie').required('Podaj nazwisko'),
+    first_name: Yup.string().required('Podaj imię').min(4, 'Imię zbyt krótkie').max(50, 'Imię zbyt długie'),
+    last_name: Yup.string()
+      .required('Podaj nazwisko')
+      .min(5, 'Nazwisko zbyt krótkie')
+      .max(50, 'Nazwisko zbyt długie')
+      .required('Podaj nazwisko'),
     city: Yup.string().required('Podaj nazwę miasta'),
     zip_code: Yup.string()
       .required('Podaj kod pocztowy')
       .matches(/\d{2}-\d{3}/, 'Kod nieprawidłowy'),
   });
-
-  // FIXME Correct validation below
 
   return (
     <Col as="main">
@@ -56,30 +55,6 @@ export const OrderForm = ({ setWasSubmitted }) => {
             city: '',
             zip_code: '',
           }}
-          // validate={(values) => {
-          //   const errors = {};
-          //   if (!values.first_name) {
-          //     errors.first_name = 'Imię wymagane';
-          //   } else if (!/^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/i.test(values.first_name)) {
-          //     errors.first_name = 'Nieprawidłowe imię';
-          //   }
-          //   if (!values.last_name) {
-          //     errors.last_name = 'Nazwisko wymagane';
-          //   } else if (!/^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/i.test(values.last_name)) {
-          //     errors.last_name = 'Nieprawidłowe nazwisko';
-          //   }
-          //   if (!values.city) {
-          //     errors.city = 'Miasto wymagane';
-          //   } else if (!/^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/i.test(values.city)) {
-          //     errors.city = 'Miasto nieprawidłowe';
-          //   }
-          //   if (!values.zip_code) {
-          //     errors.zip_code = 'Kod pocztowy wymagany';
-          //   } else if (/^d{2}-d{3}$/i.test(values.zip_code)) {
-          //     errors.zip_code = 'Nieprawidłowy kod';
-          //   }
-          //   return errors;
-          // }}
         >
           {({ handleChange, handleBlur, values, touched, errors }) => (
             <Form className="d-flex flex-column" onSubmit={(e) => handleSubmit(e)}>
@@ -92,13 +67,14 @@ export const OrderForm = ({ setWasSubmitted }) => {
                   onBlur={handleBlur}
                   onChange={(e) => {
                     handleChange(e);
-                    if (!errors.first_name) {
-                      dispatch({ type: 'FIRST_NAME_CHANGE', payload: e.currentTarget.value });
-                    }
+                    dispatch({ type: 'FIRST_NAME_CHANGE', payload: e.currentTarget.value });
                   }}
-                  isInvalid={!!errors.first_name}
+                  isInvalid={!!errors.first_name && touched.first_name}
+                  isValid={!errors.first_name && touched.first_name}
                 />
-                <p>{errors.first_name && touched.first_name && errors.first_name}</p>
+                <Form.Control.Feedback type="invalid">
+                  {errors.first_name && touched.first_name && errors.first_name}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Nazwisko</Form.Label>
@@ -109,13 +85,14 @@ export const OrderForm = ({ setWasSubmitted }) => {
                   onBlur={handleBlur}
                   onChange={(e) => {
                     handleChange(e);
-                    if (!errors.last_name) {
-                      dispatch({ type: 'LAST_NAME_CHANGE', payload: e.currentTarget.value });
-                    }
+                    dispatch({ type: 'LAST_NAME_CHANGE', payload: e.currentTarget.value });
                   }}
-                  isInvalid={!!errors.last_name}
+                  isInvalid={!!errors.last_name && touched.last_name}
+                  isValid={!errors.last_name && touched.last_name}
                 />
-                <p>{errors.last_name && touched.last_name && errors.last_name}</p>
+                <Form.Control.Feedback type="invalid">
+                  {errors.last_name && touched.last_name && errors.last_name}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Miejscowość</Form.Label>
@@ -125,14 +102,15 @@ export const OrderForm = ({ setWasSubmitted }) => {
                   onBlur={handleBlur}
                   onChange={(e) => {
                     handleChange(e);
-                    if (!errors.city) {
-                      dispatch({ type: 'CITY_CHANGE', payload: e.currentTarget.value });
-                    }
+                    dispatch({ type: 'CITY_CHANGE', payload: e.currentTarget.value });
                   }}
                   value={values.city}
-                  isInvalid={!!errors.city}
+                  isInvalid={!!errors.city && touched.city}
+                  isValid={!errors.city && touched.city}
                 />
-                <p>{errors.city && touched.city && errors.city}</p>
+                <Form.Control.Feedback type="invalid">
+                  {errors.city && touched.city && errors.city}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-4">
                 <Form.Label>Kod pocztowy</Form.Label>
@@ -142,14 +120,15 @@ export const OrderForm = ({ setWasSubmitted }) => {
                   onBlur={handleBlur}
                   onChange={(e) => {
                     handleChange(e);
-                    if (!errors.zip_code) {
-                      dispatch({ type: 'ZIP_CODE_CHANGE', payload: e.currentTarget.value });
-                    }
+                    dispatch({ type: 'ZIP_CODE_CHANGE', payload: e.currentTarget.value });
                   }}
                   value={values.zip_code}
-                  isInvalid={!!errors.zip_code}
+                  isInvalid={!!errors.zip_code && touched.city}
+                  isValid={!errors.zip_code && touched.zip_code}
                 />
-                <p>{errors.zip_code && touched.zip_code && errors.zip_code}</p>
+                <Form.Control.Feedback type="invalid">
+                  {errors.zip_code && touched.zip_code && errors.zip_code}
+                </Form.Control.Feedback>
               </Form.Group>
               <Button variant="warning" type="submit" className="text-uppercase font-weight-bolder text-light mx-auto">
                 Zamawiam i płacę
@@ -162,7 +141,7 @@ export const OrderForm = ({ setWasSubmitted }) => {
           Twoje zamówienie zostało wysłane. <Link to="/shop/1">Wróc</Link> na stronę sklepu
         </p>
       )}
-      <SnackBar toast={backEndPass} setToast={setBackPass} color="success">
+      <SnackBar toast={backEndPass} setToast={setBackPass} color="success" delay={3000}>
         Zamówienie zostało wysłane
       </SnackBar>
       <SnackBar toast={backEndRefuse} setToast={setBackRefuse} color="danger" delay={3000}>

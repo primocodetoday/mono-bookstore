@@ -38,15 +38,15 @@ export const Bookstore = () => {
 
   const booksArray = books.map((book) => {
     return (
-      <Col xs={12} md={6} lg={4} className="mb-3" key={book.id}>
+      <Col xs={12} md={6} lg={6} xl={4} className="mb-4" key={book.id}>
         <BookCard book={book} />
       </Col>
     );
   });
 
   return (
-    <>
-      <div className="d-flex mb-2">
+    <div className="mb-5">
+      <Row className="d-flex mb-2 px-3">
         <Header>Sklep</Header>
         <Pagination className="ml-auto">
           <Pagination.Item active={activePage === 1} onClick={() => handlePagination(1)}>
@@ -56,9 +56,9 @@ export const Bookstore = () => {
             {2}
           </Pagination.Item>
         </Pagination>
-      </div>
+      </Row>
 
       {books.length ? <Row>{booksArray}</Row> : <Loader />}
-    </>
+    </div>
   );
 };

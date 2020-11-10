@@ -7,8 +7,8 @@ import { OrderContext } from 'context/OrderContext';
 export const BasketItem = ({ title, quantity, price, id }) => {
   const { dispatch } = React.useContext(OrderContext);
   return (
-    <ListGroup.Item variant="secondary" as="li" className="mb-3">
-      <Row className="align-items-center">
+    <ListGroup.Item variant="secondary" as="li" className="mb-3 rounded border">
+      <Row className=" align-items-center">
         <Col xs={grid.col1.xs} sm={grid.col1.sm} md={grid.col1.md}>
           <p className="h6 text-left">{title}</p>
         </Col>
@@ -18,7 +18,7 @@ export const BasketItem = ({ title, quantity, price, id }) => {
         <Col xs={grid.col3.xs} sm={grid.col3.sm} md={grid.col3.md}>
           <p className="h6 text-center">{priceWithComma(price)} zł</p>
         </Col>
-        <Col xs={grid.col4.xs} sm={grid.col4.sm} md={grid.col4.md}>
+        <Col xs={grid.col4.xs} sm={grid.col4.sm} md={grid.col4.md} className="text-center">
           <Button variant="secondary" size="sm" onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: { id } })}>
             <i className="fas fa-times" />
           </Button>

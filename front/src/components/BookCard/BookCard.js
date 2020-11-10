@@ -19,7 +19,7 @@ export const BookCard = ({ book }) => {
   const { id, title, cover_url, author, pages } = book;
 
   return (
-    <div className=" card p-3 mx-auto mb-3 d-flex align-items-stretch h-100">
+    <div className="card p-2 mx-auto d-flex align-items-stretch h-100">
       <Row xs={1} sm={2} className="px-2 ">
         <Col sm={5}>
           <Media>
@@ -39,7 +39,7 @@ export const BookCard = ({ book }) => {
         </Col>
       </Row>
       <Button
-        className="ml-auto mt-auto"
+        className="ml-auto mt-auto text-uppercase font-weight-bolder text-light"
         variant="warning"
         onClick={() => {
           dispatch({ type: 'ADD_BOOK', payload: { id, quantity: 1 } });

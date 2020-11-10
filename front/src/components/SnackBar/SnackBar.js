@@ -13,7 +13,7 @@ export const SnackBar = ({ toast, setToast, children, color, delay }) => {
       delay={delay}
       autohide
     >
-      <Toast.Body className={`text-center text-${color} font-weight-bold`}>
+      <Toast.Body className={`text-center text-${color} font-weight-bold text-uppercase`}>
         <i className="fas fa-exclamation mr-3" />
         {children}
         <i className="fas fa-exclamation ml-3" />

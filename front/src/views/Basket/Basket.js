@@ -53,26 +53,32 @@ export const Basket = () => {
   return (
     <>
       <Header>Koszyk</Header>
-      {!basket.length && (
+      {!basket.length ? (
         <p className="mb-4 text-center">
           Nie dodałeś jeszcze nic do koszyka. Dodaj pozycje na stronie <Link to="/shop/1">sklepu</Link>
         </p>
+      ) : (
+        <Col className="px-0 mb-5">
+          <BasketHeader />
+          <ListGroup as="ul">{basketList}</ListGroup>
+          <div className="mt-2 flex-column d-flex justify-content-end align-items-end">
+            <p className="h6">
+              Wartość twoich zakupów to{' '}
+              <strong>{summaryBalance(basket) ? priceWithComma(summaryBalance(basket)) : 0} zł</strong>
+            </p>
+            {basket.length ? (
+              <Button
+                className="mt-2 text-uppercase font-weight-bolder text-light"
+                variant="warning"
+                as={Link}
+                to="/order"
+              >
+                Zamawiam
+              </Button>
+            ) : null}
+          </div>
+        </Col>
       )}
-      <Col>
-        <BasketHeader />
-        <ListGroup as="ul">{basketList}</ListGroup>
-        <div className="mt-3 d-flex justify-content-end align-items-center">
-          <p className="h6">
-            Wartość twoich zakupów to{' '}
-            <strong>{summaryBalance(basket) ? priceWithComma(summaryBalance(basket)) : 0} zł</strong>
-          </p>
-          {basket.length ? (
-            <Button className="ml-4 font-weight-bold text-light" variant="warning" as={Link} to="/order">
-              Zamawiam
-            </Button>
-          ) : null}
-        </div>
-      </Col>
     </>
   );
 };

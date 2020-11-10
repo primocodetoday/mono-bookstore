@@ -19,9 +19,11 @@ export const Bookstore = () => {
         .then((response) => {
           const { data } = response.data;
           setBooks(data);
+          // eslint-disable-next-line no-console
+          console.log('Data recived', response.status);
         })
         // eslint-disable-next-line no-console
-        .catch((err) => console.error(err));
+        .catch((err) => console.error('Server Error', err));
     }
     // simulate delay
     setTimeout(() => {

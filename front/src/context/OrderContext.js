@@ -14,7 +14,7 @@ export const OrderContext = React.createContext();
 export const OrderContextProvider = ({ children, ...restProps }) => {
   const [state, dispatch] = React.useReducer(orderReducer, initialOrderState, () => {
     const storage = localStorage.getItem('order');
-    return storage ? JSON.parse(storage) : {};
+    return storage ? JSON.parse(storage) : initialOrderState;
   });
 
   useEffect(() => {

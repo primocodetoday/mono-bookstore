@@ -17,14 +17,16 @@ export const OrderForm = ({ setOrderPlaced }) => {
     async function orderBooks() {
       await bookstoreAPI
         .post('order', state)
-        .then(() => {
+        .then((response) => {
           setOrderPlaced(true);
           setBackPass(true);
           dispatch({ type: 'RESET_ORDER' });
-        })
-        .catch(({ message }) => {
           // eslint-disable-next-line no-console
-          console.log(message);
+          console.log('Order send', response.status);
+        })
+        .catch((err) => {
+          // eslint-disable-next-line no-console
+          console.error('Server refuse your order', err);
           setBackRefuse(true);
         });
     }

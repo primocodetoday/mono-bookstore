@@ -4,6 +4,7 @@ import { Loader, TopNav } from 'components';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { OrderContextProvider } from 'context/OrderContext';
 import 'theme/siteTheme.scss';
+import { routes } from 'routes';
 
 // Lazy import
 const Bookstore = React.lazy(() => import('views/Bookstore/Bookstore'));
@@ -18,14 +19,14 @@ const App = () => {
         <TopNav />
         <Container as="main">
           <Switch>
-            <Redirect exact from="/" to="/shop/1" />
+            <Redirect exact from={routes.home} to={routes.shop_1} />
             <React.Suspense fallback={<Loader />}>
-              <Route exact path="/shop/">
-                <Redirect to="/shop/1" />
+              <Route exact path={routes.shop}>
+                <Redirect to={routes.shop_1} />
               </Route>
-              <Route path="/shop/:page" component={Bookstore} />
-              <Route path="/basket" component={Basket} />
-              <Route path="/order" component={Order} />
+              <Route path={routes.shopParams} component={Bookstore} />
+              <Route path={routes.basket} component={Basket} />
+              <Route path={routes.order} component={Order} />
             </React.Suspense>
             <Route path="*" component={Page404} />
           </Switch>

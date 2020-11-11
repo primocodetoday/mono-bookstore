@@ -1,14 +1,14 @@
 ﻿import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
-import { SnackBar } from 'components';
-import PropTypes from 'prop-types';
+import { SnackBar, Input } from 'components';
 import { Link } from 'react-router-dom';
 import { actionType } from 'reducers';
 import { orderSchema } from 'models/orderSchema';
-import { Input } from 'components/Input/Input';
+import { routes } from 'routes';
 
 export const OrderForm = ({ setOrderPlaced }) => {
   const { state, dispatch } = React.useContext(OrderContext);
@@ -94,7 +94,7 @@ export const OrderForm = ({ setOrderPlaced }) => {
         </Formik>
       ) : (
         <p className="text-success text-uppercase font-weight-bolder text-center">
-          Twoje zamówienie zostało wysłane. <Link to="/shop/1">Wróc</Link> na stronę sklepu
+          Twoje zamówienie zostało wysłane. <Link to={routes.shop}>Wróc</Link> na stronę sklepu
         </p>
       )}
       <SnackBar toast={backEndPass} setToast={setBackPass} color="success" delay={3000}>

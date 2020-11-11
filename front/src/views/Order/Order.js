@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import { Header, OrderForm } from 'components';
 import { OrderContext } from 'context/OrderContext';
 import { Link } from 'react-router-dom';
+import { routes } from 'routes';
 
 const Order = () => {
   const { state } = React.useContext(OrderContext);
@@ -17,8 +18,8 @@ const Order = () => {
         <OrderForm setOrderPlaced={setOrderPlaced} />
       ) : (
         <p className="text-center">
-          Ta strona jest niedostępna dla Ciebie dopóki nie dodasz pozycji do koszyka. <Link to="/shop/1">Wróc</Link> na
-          stronę sklepu
+          Ta strona jest niedostępna dla Ciebie dopóki nie dodasz pozycji do koszyka. <Link to={routes.shop}>Wróc</Link>{' '}
+          na stronę sklepu
         </p>
       )}
     </Col>

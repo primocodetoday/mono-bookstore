@@ -5,6 +5,9 @@ import { OrderContext } from 'context/OrderContext';
 
 export const TopNav = () => {
   const { state } = React.useContext(OrderContext);
+
+  const { order } = state;
+
   return (
     <Navbar bg="warning" variant="dark" expand="sm" className="mb-4 " sticky="top">
       <Navbar.Brand as={NavLink} to="/">
@@ -19,7 +22,7 @@ export const TopNav = () => {
           </Nav.Link>
           <Nav.Link className="text-light ml-auto text-uppercase font-weight-bolder" as={NavLink} to="/basket">
             Koszyk
-            <Badge className="ml-2 badge-success">{state.order.length}</Badge>
+            <Badge className="ml-2 badge-success">{order ? order.length : '0'}</Badge>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

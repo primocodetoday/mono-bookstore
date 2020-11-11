@@ -1,5 +1,6 @@
 ﻿import React, { useEffect } from 'react';
-import { orderReducer } from 'reducers/orderReducer';
+import PropTypes from 'prop-types';
+import { orderReducer } from 'reducers';
 
 export const initialOrderState = {
   order: [],
@@ -26,4 +27,8 @@ export const OrderContextProvider = ({ children, ...restProps }) => {
       {children}
     </OrderContext.Provider>
   );
+};
+
+OrderContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

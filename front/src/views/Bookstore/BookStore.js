@@ -1,8 +1,7 @@
 import React from 'react';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { Col, Row, Pagination } from 'react-bootstrap';
-import { BookCard } from 'components/BookCard/BookCard';
-import { Loader, Header } from 'components';
+import { BookCard, Loader, Header } from 'components';
 import { useParams, useHistory } from 'react-router-dom';
 import './styles/bookstoreStyles.css';
 

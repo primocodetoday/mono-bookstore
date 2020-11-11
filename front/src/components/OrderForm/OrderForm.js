@@ -4,8 +4,10 @@ import { Formik } from 'formik';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { SnackBar } from 'components';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
+import { actionType } from 'reducers';
+import { orderSchema } from 'models/orderSchema';
 
 export const OrderForm = ({ setOrderPlaced }) => {
   const { state, dispatch } = React.useContext(OrderContext);
@@ -20,7 +22,7 @@ export const OrderForm = ({ setOrderPlaced }) => {
         .then((response) => {
           setOrderPlaced(true);
           setBackPass(true);
-          dispatch({ type: 'RESET_ORDER' });
+          dispatch({ type: actionType.resetOrder });
           // eslint-disable-next-line no-console
           console.log('Order send', response.status);
         })
@@ -32,19 +34,6 @@ export const OrderForm = ({ setOrderPlaced }) => {
     }
     orderBooks();
   };
-  // orderSchema rules based on backend module
-  const orderSchema = Yup.object({
-    first_name: Yup.string().required('Podaj imię').min(4, 'Imię zbyt krótkie').max(50, 'Imię zbyt długie'),
-    last_name: Yup.string()
-      .required('Podaj nazwisko')
-      .min(5, 'Nazwisko zbyt krótkie')
-      .max(50, 'Nazwisko zbyt długie')
-      .required('Podaj nazwisko'),
-    city: Yup.string().required('Podaj nazwę miasta'),
-    zip_code: Yup.string()
-      .required('Podaj kod pocztowy')
-      .matches(/\d{2}-\d{3}/, 'Kod nieprawidłowy'),
-  });
 
   return (
     <Col as="section">
@@ -67,9 +56,12 @@ export const OrderForm = ({ setOrderPlaced }) => {
                   type="text"
                   value={values.first_name}
                   onBlur={handleBlur}
-                  onChange={(e) => {
-                    handleChange(e);
-                    dispatch({ type: 'FIRST_NAME_CHANGE', payload: e.currentTarget.value });
+                  onChange={({ currentTarget }) => {
+                    handleChange({ currentTarget });
+                    dispatch({
+                      type: actionType.receiverChange,
+                      payload: { [currentTarget.name]: currentTarget.value },
+                    });
                   }}
                   isInvalid={!!errors.first_name && touched.first_name}
                   isValid={!errors.first_name && touched.first_name}
@@ -85,9 +77,12 @@ export const OrderForm = ({ setOrderPlaced }) => {
                   type="text"
                   value={values.last_name}
                   onBlur={handleBlur}
-                  onChange={(e) => {
-                    handleChange(e);
-                    dispatch({ type: 'LAST_NAME_CHANGE', payload: e.currentTarget.value });
+                  onChange={({ currentTarget }) => {
+                    handleChange({ currentTarget });
+                    dispatch({
+                      type: actionType.receiverChange,
+                      payload: { [currentTarget.name]: currentTarget.value },
+                    });
                   }}
                   isInvalid={!!errors.last_name && touched.last_name}
                   isValid={!errors.last_name && touched.last_name}
@@ -102,9 +97,12 @@ export const OrderForm = ({ setOrderPlaced }) => {
                   name="city"
                   type="text"
                   onBlur={handleBlur}
-                  onChange={(e) => {
-                    handleChange(e);
-                    dispatch({ type: 'CITY_CHANGE', payload: e.currentTarget.value });
+                  onChange={({ currentTarget }) => {
+                    handleChange({ currentTarget });
+                    dispatch({
+                      type: actionType.receiverChange,
+                      payload: { [currentTarget.name]: currentTarget.value },
+                    });
                   }}
                   value={values.city}
                   isInvalid={!!errors.city && touched.city}
@@ -120,9 +118,12 @@ export const OrderForm = ({ setOrderPlaced }) => {
                   name="zip_code"
                   type="text"
                   onBlur={handleBlur}
-                  onChange={(e) => {
-                    handleChange(e);
-                    dispatch({ type: 'ZIP_CODE_CHANGE', payload: e.currentTarget.value });
+                  onChange={({ currentTarget }) => {
+                    handleChange({ currentTarget });
+                    dispatch({
+                      type: actionType.receiverChange,
+                      payload: { [currentTarget.name]: currentTarget.value },
+                    });
                   }}
                   value={values.zip_code}
                   isInvalid={!!errors.zip_code && touched.city}
@@ -152,3 +153,5 @@ export const OrderForm = ({ setOrderPlaced }) => {
     </Col>
   );
 };
+
+OrderForm.propTypes = { setOrderPlaced: PropTypes.func.isRequired };

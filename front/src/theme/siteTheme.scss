@@ -8,5 +8,8 @@ $theme-colors: (
 li {
   list-style-type: none;
 }
+ul {
+  padding-inline-start: 0px;
+}
 
 @import 'bootstrap/scss/bootstrap';

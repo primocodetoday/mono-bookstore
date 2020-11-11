@@ -3,7 +3,7 @@ import { Bookstore } from 'views/Bookstore/BookStore';
 import { Basket } from 'views/Basket/Basket';
 import { Order } from 'views/Order/Order';
 import { Container } from 'react-bootstrap';
-import { TopNav } from 'components/TopNav/TopNav';
+import { TopNav } from 'components';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { OrderContextProvider } from 'context/OrderContext';
 import { Page404 } from 'views/Page404/Page404';

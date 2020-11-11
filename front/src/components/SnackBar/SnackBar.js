@@ -1,6 +1,5 @@
 ﻿import React from 'react';
 import { Toast } from 'react-bootstrap';
-
 import PropTypes from 'prop-types';
 
 export const SnackBar = ({ toast, setToast, children, color, delay }) => {

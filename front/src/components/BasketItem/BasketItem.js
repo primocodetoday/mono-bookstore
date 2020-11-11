@@ -1,11 +1,14 @@
 ﻿import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 import { priceWithComma } from 'helpers/priceWithComma';
 import { OrderContext } from 'context/OrderContext';
+import { actionType } from 'reducers';
 
 export const BasketItem = ({ title, quantity, price, id }) => {
   const { dispatch } = React.useContext(OrderContext);
+
   return (
     <ListGroup.Item variant="secondary" as="li" className="mb-3 px-3 rounded border">
       <Row className=" align-items-center">
@@ -23,7 +26,7 @@ export const BasketItem = ({ title, quantity, price, id }) => {
             className="text-center"
             variant="danger"
             size="sm"
-            onClick={() => dispatch({ type: 'REMOVE_BOOK', payload: { id } })}
+            onClick={() => dispatch({ type: actionType.removeBook, payload: { id } })}
           >
             <i className="fas fa-times " />
           </Button>
@@ -31,4 +34,11 @@ export const BasketItem = ({ title, quantity, price, id }) => {
       </Row>
     </ListGroup.Item>
   );
+};
+
+BasketItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
 };

@@ -1,22 +1,12 @@
 ﻿/* eslint-disable no-console */
 import { initialOrderState } from 'context/OrderContext';
+import { deepStateAdd, deepStateSub } from 'reducers/reducerHelpers';
 
-export const deepStateAdd = (state, action) => {
-  return state.order.map((item) => {
-    if (item.id === action.payload.id) {
-      return { ...item, quantity: item.quantity + 1 };
-    }
-    return item;
-  });
-};
-
-export const deepStateSub = (state, action) => {
-  return state.order.map((item) => {
-    if (item.id === action.payload.id) {
-      return { ...item, quantity: item.quantity - 1 };
-    }
-    return item;
-  });
+export const actionType = {
+  removeBook: 'REMOVE_BOOK',
+  addBook: 'ADD_BOOK',
+  resetOrder: 'RESET_ORDER',
+  receiverChange: 'RECEIVER_CHANGE',
 };
 
 export const orderReducer = (state, action) => {
@@ -38,14 +28,8 @@ export const orderReducer = (state, action) => {
       }
       console.log('New Book added');
       return { ...state, order: [...state.order, action.payload] };
-    case 'FIRST_NAME_CHANGE':
-      return { ...state, first_name: action.payload };
-    case 'LAST_NAME_CHANGE':
-      return { ...state, last_name: action.payload };
-    case 'CITY_CHANGE':
-      return { ...state, city: action.payload };
-    case 'ZIP_CODE_CHANGE':
-      return { ...state, zip_code: action.payload };
+    case 'RECEIVER_CHANGE':
+      return { ...state, ...action.payload };
     case 'RESET_ORDER':
       return { ...initialOrderState };
     default:

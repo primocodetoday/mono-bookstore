@@ -4,11 +4,11 @@
 
 ### Tech/framework used 🔧
 
-| Main Tech | React     |
-| --------- | --------- |
-| Addons    | axios,    |
-| Styles    | Bootstrap |
-| Backend   | Express   |
+| Main Tech | React                      |
+| --------- | -------------------------- |
+| Addons    | Axios, Formik, Yup         |
+| Styles    | Bootstrap, React-Bootstrap |
+| Backend   | Express                    |
 
 ### Scripts
 

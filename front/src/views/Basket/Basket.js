@@ -8,7 +8,7 @@ import './styles/basketStyles.css';
 import { priceWithComma } from 'helpers/priceWithComma';
 import { summaryBalance } from 'helpers/summaryBalance';
 
-export const Basket = () => {
+const Basket = () => {
   const { state } = React.useContext(OrderContext);
   const [basket, setBasket] = React.useState([]);
 
@@ -80,3 +80,5 @@ export const Basket = () => {
     </Col>
   );
 };
+
+export default Basket;

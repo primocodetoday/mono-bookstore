@@ -4,7 +4,7 @@ import { Header, OrderForm } from 'components';
 import { OrderContext } from 'context/OrderContext';
 import { Link } from 'react-router-dom';
 
-export const Order = () => {
+const Order = () => {
   const { state } = React.useContext(OrderContext);
   const [wasOrderPlaced, setOrderPlaced] = React.useState(false);
 
@@ -24,3 +24,5 @@ export const Order = () => {
     </Col>
   );
 };
+
+export default Order;

@@ -2,7 +2,7 @@
 import { Button, Row, Col, Media, Card } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { SnackBar } from 'components/SnackBar/SnackBar';
-import { actionType } from 'reducers';
+import { ADD_BOOK } from 'context/actionTypes';
 import PropTypes from 'prop-types';
 
 export const BookCard = ({ book }) => {
@@ -35,7 +35,7 @@ export const BookCard = ({ book }) => {
         className="ml-auto mt-auto mb-2 mr-2 text-uppercase font-weight-bolder"
         variant="outline-warning"
         onClick={() => {
-          dispatch({ type: actionType.addBook, payload: { id, quantity: 1 } });
+          dispatch({ type: ADD_BOOK, payload: { id, quantity: 1 } });
           setIsAdded(true);
         }}
       >

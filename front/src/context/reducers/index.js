@@ -1,13 +1,6 @@
 ﻿/* eslint-disable no-console */
 import { initialOrderState } from 'context/OrderContext';
-import { deepStateAdd, deepStateSub } from 'reducers/reducerHelpers';
-
-export const actionType = {
-  removeBook: 'REMOVE_BOOK',
-  addBook: 'ADD_BOOK',
-  resetOrder: 'RESET_ORDER',
-  receiverChange: 'RECEIVER_CHANGE',
-};
+import { deepStateAdd, deepStateSub } from 'context/reducers/reducerHelpers';
 
 export const orderReducer = (state, action) => {
   switch (action.type) {

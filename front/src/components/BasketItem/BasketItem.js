@@ -4,7 +4,7 @@ import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 import { priceWithComma } from 'helpers/priceWithComma';
 import { OrderContext } from 'context/OrderContext';
-import { actionType } from 'reducers';
+import { REMOVE_BOOK } from 'context/actionTypes';
 
 export const BasketItem = ({ title, quantity, price, id }) => {
   const { dispatch } = React.useContext(OrderContext);
@@ -26,7 +26,7 @@ export const BasketItem = ({ title, quantity, price, id }) => {
             className="text-center"
             variant="danger"
             size="sm"
-            onClick={() => dispatch({ type: actionType.removeBook, payload: { id } })}
+            onClick={() => dispatch({ type: REMOVE_BOOK, payload: { id } })}
           >
             <i className="fas fa-times " />
           </Button>

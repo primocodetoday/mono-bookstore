@@ -6,7 +6,7 @@ import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { SnackBar, Input } from 'components';
 import { Link } from 'react-router-dom';
-import { actionType } from 'reducers';
+import { RESET_ORDER } from 'context/actionTypes';
 import { orderSchema } from 'models/orderSchema';
 import { routes } from 'routes';
 
@@ -23,7 +23,7 @@ export const OrderForm = ({ setOrderPlaced }) => {
         .then((response) => {
           setOrderPlaced(true);
           setBackPass(true);
-          dispatch({ type: actionType.resetOrder });
+          dispatch({ type: RESET_ORDER });
           // eslint-disable-next-line no-console
           console.log('Order send', response.status);
         })

@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Form } from 'react-bootstrap';
-import { actionType } from 'reducers';
+import { RECEIVER_CHANGE } from 'context/actionTypes';
 import { OrderContext } from 'context/OrderContext';
 import PropTypes from 'prop-types';
 
@@ -18,7 +18,7 @@ export const Input = ({ label, name, type, value, onBlur, handleChange, error, t
         onChange={({ currentTarget }) => {
           handleChange({ currentTarget });
           dispatch({
-            type: actionType.receiverChange,
+            type: RECEIVER_CHANGE,
             payload: { [currentTarget.name]: currentTarget.value },
           });
         }}

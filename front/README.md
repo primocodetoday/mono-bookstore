@@ -1,15 +1,15 @@
 ### Branches 🔀
 
 🌟 master - Contex API & useReducer : finished
-🌟 redux - Redux & useSelector/useDispatch : in dev
+🌟 redux - Redux & useSelector/useDispatch : finished
 
 ### Tech/framework used 🔧
 
-| Main Tech | React                      |
-| --------- | -------------------------- |
-| Addons    | Axios, Formik, Yup, Redux  |
-| Styles    | Bootstrap, React-Bootstrap |
-| Backend   | Express                    |
+| Main Tech | React                             |
+| --------- | --------------------------------- |
+| Addons    | Axios, Formik, Yup, Redux, Lodash |
+| Styles    | Bootstrap, React-Bootstrap        |
+| Backend   | Express                           |
 
 ### Scripts
 

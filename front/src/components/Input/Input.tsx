@@ -2,9 +2,28 @@
 import { Form } from 'react-bootstrap';
 import { RECEIVER_CHANGE } from 'context/actionTypes';
 import { OrderContext } from 'context/OrderContext';
-import PropTypes from 'prop-types';
 
-export const Input = ({ label, name, type, value, onBlur, handleChange, error, touched }) => {
+export type Input = {
+  label: string;
+  name: string;
+  value: string;
+  type?: string;
+  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  handleChange: (e: React.ChangeEvent<any>) => void;
+  error: string | undefined;
+  touched: boolean | undefined;
+};
+
+export const Input: React.FC<Input> = ({
+  label,
+  name,
+  type = 'text',
+  value,
+  onBlur,
+  handleChange,
+  error = '',
+  touched = false,
+}) => {
   const { dispatch } = React.useContext(OrderContext);
 
   return (
@@ -15,11 +34,11 @@ export const Input = ({ label, name, type, value, onBlur, handleChange, error, t
         type={type}
         value={value}
         onBlur={onBlur}
-        onChange={({ currentTarget }) => {
-          handleChange({ currentTarget });
+        onChange={(e) => {
+          handleChange(e);
           dispatch({
             type: RECEIVER_CHANGE,
-            payload: { [currentTarget.name]: currentTarget.value },
+            payload: { [e.currentTarget.name]: e.currentTarget.value },
           });
         }}
         isInvalid={!!error && touched}
@@ -28,21 +47,4 @@ export const Input = ({ label, name, type, value, onBlur, handleChange, error, t
       <Form.Control.Feedback type="invalid">{error && touched && error}</Form.Control.Feedback>
     </Form.Group>
   );
-};
-
-Input.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onBlur: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  error: PropTypes.string,
-  touched: PropTypes.bool,
-};
-
-Input.defaultProps = {
-  type: 'text',
-  error: '',
-  touched: false,
 };

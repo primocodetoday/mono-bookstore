@@ -4,10 +4,11 @@ import { Col, Row, Pagination } from 'react-bootstrap';
 import { BookCard, Loader, Header } from 'components';
 import { useParams, useHistory } from 'react-router-dom';
 import './styles/bookstoreStyles.scss';
+import { ParamTypes, Book } from './Bookstore.interface';
 
-const Bookstore = () => {
-  const [books, setBooks] = React.useState([]);
-  const { page } = useParams();
+const Bookstore: React.FC = () => {
+  const [books, setBooks] = React.useState<Book[]>([]);
+  const { page } = useParams<ParamTypes>();
   const [activePage, setActivePage] = React.useState(1);
 
   React.useEffect(() => {
@@ -32,7 +33,7 @@ const Bookstore = () => {
 
   const history = useHistory();
 
-  const handlePagination = (nr) => {
+  const handlePagination = (nr: number) => {
     setActivePage(nr);
     history.push(`/shop/${nr}`);
   };

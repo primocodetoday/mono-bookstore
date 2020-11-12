@@ -1,11 +1,12 @@
 ﻿import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Row, Col, Media, Card } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { SnackBar } from 'components/SnackBar/SnackBar';
 import { ADD_BOOK } from 'context/actionTypes';
-import PropTypes from 'prop-types';
+import { Book } from 'views/Bookstore/Bookstore.interface';
 
-export const BookCard = ({ book }) => {
+export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const { dispatch } = React.useContext(OrderContext);
   const [isAdded, setIsAdded] = React.useState(false);
 

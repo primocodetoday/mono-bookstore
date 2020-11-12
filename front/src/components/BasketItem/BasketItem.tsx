@@ -6,7 +6,14 @@ import { priceWithComma } from 'helpers/priceWithComma';
 import { OrderContext } from 'context/OrderContext';
 import { REMOVE_BOOK } from 'context/actionTypes';
 
-export const BasketItem = ({ title, quantity, price, id }) => {
+export type BasketItemProp = {
+  title: string;
+  quantity: number;
+  price: number;
+  id: number;
+};
+
+export const BasketItem: React.FC<BasketItemProp> = ({ title, quantity, price, id }) => {
   const { dispatch } = React.useContext(OrderContext);
 
   return (

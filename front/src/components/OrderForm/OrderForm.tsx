@@ -10,12 +10,16 @@ import { RESET_ORDER } from 'context/actionTypes';
 import { orderSchema } from 'models/orderSchema';
 import { routes } from 'routes';
 
-export const OrderForm = ({ setOrderPlaced }) => {
+export type OrderForm = {
+  setOrderPlaced: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const OrderForm: React.FC<OrderForm> = ({ setOrderPlaced }) => {
   const { state, dispatch } = React.useContext(OrderContext);
   const [backEndPass, setBackPass] = React.useState(false);
   const [backEndRefuse, setBackEndRefuse] = React.useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     async function orderBooks() {
       await bookstoreAPI
@@ -47,6 +51,7 @@ export const OrderForm = ({ setOrderPlaced }) => {
             city: '',
             zip_code: '',
           }}
+          onSubmit={() => undefined}
         >
           {({ handleChange, handleBlur, values, touched, errors }) => (
             <Form className="d-flex flex-column" onSubmit={(e) => handleSubmit(e)}>

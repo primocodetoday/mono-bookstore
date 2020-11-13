@@ -1,16 +1,6 @@
 ﻿/* eslint-disable no-console */
-import { OrderActionTypes, ActionTypes } from './actions/actions.interface';
+import { OrderActionTypes, ActionTypes } from '../actions';
 import { deepStateAdd, deepStateSub } from './reducerHelpers';
-
-const order: IItem[] = [];
-
-export const initialOrderState = {
-  order: order,
-  first_name: '',
-  last_name: '',
-  city: '',
-  zip_code: '',
-};
 
 export type IItem = {
   id: number;
@@ -23,6 +13,16 @@ export type TState = {
   last_name: string;
   city: string;
   zip_code: string;
+};
+
+const order: IItem[] = [];
+
+export const initialOrderState = {
+  order,
+  first_name: '',
+  last_name: '',
+  city: '',
+  zip_code: '',
 };
 
 export const orderReducer = (state = initialOrderState, action: OrderActionTypes): TState => {

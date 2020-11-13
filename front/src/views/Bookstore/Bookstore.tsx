@@ -4,7 +4,18 @@ import { Col, Row, Pagination } from 'react-bootstrap';
 import { BookCard, Loader, Header } from 'components';
 import { useParams, useHistory } from 'react-router-dom';
 import './styles/bookstoreStyles.scss';
-import { ParamTypes, Book } from './Bookstore.interface';
+
+export interface ParamTypes {
+  page: string;
+}
+
+export type Book = {
+  id: number;
+  title: string;
+  cover_url: string;
+  author: string;
+  pages: number;
+};
 
 const Bookstore: React.FC = () => {
   const [books, setBooks] = React.useState<Book[]>([]);

@@ -1,12 +1,11 @@
 ﻿// TODO Delete this later
 /* eslint-disable react/prop-types */
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { Button, Row, Col, Media, Card } from 'react-bootstrap';
-import { OrderContext } from 'context/OrderContext';
+import { OrderContext } from 'context/OrderContextProvider';
 import { SnackBar } from 'components/SnackBar/SnackBar';
 import { addBook } from 'context/actions';
-import { Book } from 'views/Bookstore/Bookstore.interface';
+import { Book } from 'views/Bookstore/Bookstore';
 
 export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   const { dispatch } = React.useContext(OrderContext);
@@ -50,13 +49,3 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
     </Card>
   );
 };
-
-// BookCard.propTypes = {
-//   book: PropTypes.shape({
-//     id: PropTypes.number.isRequired,
-//     title: PropTypes.string.isRequired,
-//     cover_url: PropTypes.string.isRequired,
-//     author: PropTypes.string.isRequired,
-//     pages: PropTypes.number.isRequired,
-//   }).isRequired,
-// };

@@ -4,7 +4,7 @@ import React from 'react';
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 import { priceWithComma } from 'helpers/priceWithComma';
-import { OrderContext } from 'context/OrderContext';
+import { OrderContext } from 'context/OrderContextProvider';
 import { removeBook } from 'context/actions';
 
 export type BasketItemProps = {

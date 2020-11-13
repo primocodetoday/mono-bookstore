@@ -2,7 +2,7 @@
 import { Container } from 'react-bootstrap';
 import { Loader, TopNav } from 'components';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { OrderContextProvider } from 'context/OrderContext';
+import { OrderContextProvider } from 'context/OrderContextProvider';
 import 'theme/siteTheme.scss';
 import { routes } from 'routes';
 

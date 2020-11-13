@@ -1,13 +1,12 @@
 ﻿import React from 'react';
 import { Col } from 'react-bootstrap';
 import { Header, OrderForm } from 'components';
-import { OrderContext } from 'context/OrderContext';
+import { OrderContext } from 'context/OrderContextProvider';
 import { Link } from 'react-router-dom';
 import { routes } from 'routes';
 
-const Order = () => {
+const Order: React.FC = () => {
   const { state } = React.useContext(OrderContext);
-  console.log(state);
   const [wasOrderPlaced, setOrderPlaced] = React.useState(false);
 
   const { order } = state;

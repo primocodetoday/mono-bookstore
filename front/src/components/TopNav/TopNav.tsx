@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { Navbar, Nav, Badge } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { OrderContext } from 'context/OrderContext';
+import { OrderContext } from 'context/OrderContextProvider';
 import { routes } from 'routes';
 
 export const TopNav: React.FC = () => {

@@ -3,7 +3,7 @@
 import React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
-import { OrderContext } from 'context/OrderContext';
+import { OrderContext } from 'context/OrderContextProvider';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { SnackBar, Input } from 'components';
 import { Link } from 'react-router-dom';
@@ -28,7 +28,7 @@ export const OrderForm: React.FC<OrderForm> = ({ setOrderPlaced }) => {
         .then((response) => {
           setOrderPlaced(true);
           setBackPass(true);
-          dispatch(resetOrder);
+          dispatch(resetOrder());
           // eslint-disable-next-line no-console
           console.log('Order send', response.status);
         })

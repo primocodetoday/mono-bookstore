@@ -1,25 +1,34 @@
 ﻿import React from 'react';
 import { Col, ListGroup, Button } from 'react-bootstrap';
-import { OrderContext } from 'context/OrderContext';
+import { OrderContext } from 'context/OrderContextProvider';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { Header, BasketHeader, BasketItem } from 'components';
 import { Link } from 'react-router-dom';
-import './styles/basketStyles.css';
 import { priceWithComma } from 'helpers/priceWithComma';
 import { summaryBalance } from 'helpers/summaryBalance';
 import { routes } from 'routes';
+import { BasketItemProps } from 'components/BasketItem/BasketItem';
+import { IItem } from 'context/reducers';
 
-const Basket = () => {
+export interface BasketItemType extends BasketItemProps {
+  author: string;
+  cover_url: string;
+  currency: string;
+  pages: number;
+  price: number;
+}
+
+const Basket: React.FC = () => {
   const { state } = React.useContext(OrderContext);
 
-  const [basket, setBasket] = React.useState([]);
+  const [basket, setBasket] = React.useState([] as BasketItemProps[]);
 
   // Huge state and book combiner
   React.useEffect(() => {
     const result = [];
     const items = state.order;
 
-    const shot = (element) => {
+    const shot = (element: IItem): Promise<BasketItemType> => {
       return new Promise((resolve) =>
         resolve(
           bookstoreAPI

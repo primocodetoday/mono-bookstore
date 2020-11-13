@@ -1,11 +1,17 @@
 ﻿import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { orderReducer } from 'context/orderReducer';
-import { initialOrderState } from './orderReducer';
+import { orderReducer, TState } from 'context/reducers';
+import { initialOrderState } from './reducers';
+import { OrderActionTypes } from 'context/actions';
 
-export const OrderContext = React.createContext();
+export interface Context {
+  state: TState;
+  dispatch: React.Dispatch<OrderActionTypes>;
+}
 
-export const OrderContextProvider = ({ children, ...restProps }) => {
+export const OrderContext = React.createContext({} as Context);
+
+export const OrderContextProvider: React.FC = ({ children, ...restProps }) => {
   const [state, dispatch] = React.useReducer(orderReducer, initialOrderState, () => {
     const storage = localStorage.getItem('order');
     return storage ? JSON.parse(storage) : initialOrderState;

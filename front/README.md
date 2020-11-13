@@ -4,6 +4,8 @@
 
 🌟 redux - Redux & useSelector/useDispatch : finished
 
+🌟 ts-context - Contex API & useReducer in TS : finished
+
 ### Tech/framework used 🔧
 
 | Main Tech | React                             |

@@ -11,7 +11,9 @@ export type Input = {
   value: string;
   type?: string;
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
-  handleChange: (e: React.ChangeEvent<any>) => void;
+  // FIXME handleChange refactor
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  handleChange: (e: React.FormEvent<any>) => void;
   error: string | undefined;
   touched: boolean | undefined;
 };

@@ -28,9 +28,7 @@ export const initialOrderState = {
 export const orderReducer = (state = initialOrderState, action: OrderActionTypes): TState => {
   switch (action.type) {
     case ActionTypes.REMOVE_BOOK:
-      // TODO Refactor this
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      if (state.order.find((item) => item.id === action.payload.id && item.quantity! > 1)) {
+      if (state.order.find((item) => item.id === action.payload.id && item.quantity > 1)) {
         console.log('Book in order, subtracting quantity');
         return {
           ...state,

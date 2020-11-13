@@ -1,6 +1,4 @@
-﻿// TODO delete this later
-/* eslint-disable react/prop-types */
-import React from 'react';
+﻿import React from 'react';
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 import { priceWithComma } from 'helpers/priceWithComma';
@@ -38,10 +36,3 @@ export const BasketItem: React.FC<BasketItemProps> = ({ title, quantity, price, 
     </ListGroup.Item>
   );
 };
-
-// BasketItem.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   title: PropTypes.string.isRequired,
-//   quantity: PropTypes.number.isRequired,
-//   price: PropTypes.number.isRequired,
-// };

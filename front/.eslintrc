@@ -25,7 +25,7 @@
     "no-console": "warn",
     "linebreak-style": "off",
     "import/prefer-default-export": 0,
-    "react/prop-types": "warn",
+    "react/prop-types": 0,
     "prettier/prettier": [
       0,
       {

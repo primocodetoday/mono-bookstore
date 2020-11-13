@@ -1,6 +1,4 @@
-﻿// TODO delete this after finish
-/* eslint-disable react/prop-types */
-import React from 'react';
+﻿import React from 'react';
 import { Toast } from 'react-bootstrap';
 
 export type TSnackBar = {

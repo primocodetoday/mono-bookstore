@@ -1,12 +1,13 @@
-﻿import React from 'react';
-import PropTypes from 'prop-types';
+﻿// TODO delete this after finish
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { OrderContext } from 'context/OrderContext';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { SnackBar, Input } from 'components';
 import { Link } from 'react-router-dom';
-import { RESET_ORDER } from 'context/actionTypes';
+import { resetOrder } from 'context/actions';
 import { orderSchema } from 'models/orderSchema';
 import { routes } from 'routes';
 
@@ -27,7 +28,7 @@ export const OrderForm: React.FC<OrderForm> = ({ setOrderPlaced }) => {
         .then((response) => {
           setOrderPlaced(true);
           setBackPass(true);
-          dispatch({ type: RESET_ORDER });
+          dispatch(resetOrder);
           // eslint-disable-next-line no-console
           console.log('Order send', response.status);
         })
@@ -111,5 +112,3 @@ export const OrderForm: React.FC<OrderForm> = ({ setOrderPlaced }) => {
     </Col>
   );
 };
-
-OrderForm.propTypes = { setOrderPlaced: PropTypes.func.isRequired };

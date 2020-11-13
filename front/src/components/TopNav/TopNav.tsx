@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { OrderContext } from 'context/OrderContext';
 import { routes } from 'routes';
 
-export const TopNav = () => {
+export const TopNav: React.FC = () => {
   const { state } = React.useContext(OrderContext);
 
   const { order } = state;

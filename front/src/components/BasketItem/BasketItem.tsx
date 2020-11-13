@@ -4,7 +4,7 @@ import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 import { priceWithComma } from 'helpers/priceWithComma';
 import { OrderContext } from 'context/OrderContext';
-import { REMOVE_BOOK } from 'context/actionTypes';
+import { removeBook } from 'context/actions';
 
 export type BasketItemProp = {
   title: string;
@@ -29,12 +29,7 @@ export const BasketItem: React.FC<BasketItemProp> = ({ title, quantity, price, i
           <p className="h6 text-center">{priceWithComma(price)} zł</p>
         </Col>
         <Col xs={grid.col4.xs} sm={grid.col4.sm} md={grid.col4.md} className=" d-flex justify-content-center">
-          <Button
-            className="text-center"
-            variant="danger"
-            size="sm"
-            onClick={() => dispatch({ type: REMOVE_BOOK, payload: { id } })}
-          >
+          <Button className="text-center" variant="danger" size="sm" onClick={() => dispatch(removeBook(id))}>
             <i className="fas fa-times " />
           </Button>
         </Col>

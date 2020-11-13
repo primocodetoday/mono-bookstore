@@ -7,6 +7,7 @@ import { routes } from 'routes';
 
 const Order = () => {
   const { state } = React.useContext(OrderContext);
+  console.log(state);
   const [wasOrderPlaced, setOrderPlaced] = React.useState(false);
 
   const { order } = state;

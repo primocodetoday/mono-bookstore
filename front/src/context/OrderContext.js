@@ -1,6 +1,19 @@
 ﻿import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { orderReducer } from 'context/reducers';
+import { orderReducer } from 'context/orderReducer';
+
+// export type TItem = {
+//   id: number,
+//   quantity: number,
+// };
+
+// export type TState = {
+//   order: TItem[],
+//   first_name: string,
+//   last_name: string,
+//   city: string,
+//   zip_code: string,
+// } | null;
 
 export const initialOrderState = {
   order: [],

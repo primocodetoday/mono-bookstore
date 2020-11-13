@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Form } from 'react-bootstrap';
-import { RECEIVER_CHANGE } from 'context/actionTypes';
+import { receiverChange } from 'context/actions';
 import { OrderContext } from 'context/OrderContext';
 
 export type Input = {
@@ -36,10 +36,7 @@ export const Input: React.FC<Input> = ({
         onBlur={onBlur}
         onChange={(e) => {
           handleChange(e);
-          dispatch({
-            type: RECEIVER_CHANGE,
-            payload: { [e.currentTarget.name]: e.currentTarget.value },
-          });
+          dispatch(receiverChange(e.currentTarget.name, e.currentTarget.value));
         }}
         isInvalid={!!error && touched}
         isValid={!error && touched}

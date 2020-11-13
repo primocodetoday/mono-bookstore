@@ -6,7 +6,7 @@ import { Header, BasketHeader, BasketItem } from 'components';
 import { Link } from 'react-router-dom';
 import { priceWithComma } from 'helpers/priceWithComma';
 import { summaryBalance } from 'helpers/summaryBalance';
-import { routes } from 'routes';
+import { ROUTES } from 'routes';
 import { BasketItemProps } from 'components/BasketItem/BasketItem';
 import { IItem } from 'context/reducers';
 
@@ -66,7 +66,7 @@ const Basket: React.FC = () => {
       <Header>Koszyk</Header>
       {!basket.length ? (
         <p className="mb-4 text-uppercase font-weight-bolder text-center">
-          Nie dodałeś jeszcze nic do koszyka. Dodaj pozycje na stronie <Link to={routes.shop}>sklepu</Link>
+          Nie dodałeś jeszcze nic do koszyka. Dodaj pozycje na stronie <Link to={ROUTES.SHOP}>sklepu</Link>
         </p>
       ) : (
         <Col as="section" className="px-0 mb-5">
@@ -81,7 +81,7 @@ const Basket: React.FC = () => {
               className="mt-2 text-uppercase font-weight-bolder ml-auto"
               variant="outline-warning"
               as={Link}
-              to={routes.order}
+              to={ROUTES.ORDER}
             >
               Zamawiam
             </Button>

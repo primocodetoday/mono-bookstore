@@ -7,7 +7,7 @@ import { SnackBar, Input } from 'components';
 import { Link } from 'react-router-dom';
 import { resetOrder } from 'context/actions';
 import { orderSchema } from 'models/orderSchema';
-import { routes } from 'routes';
+import { ROUTES } from 'routes';
 
 export type OrderForm = {
   setOrderPlaced: React.Dispatch<React.SetStateAction<boolean>>;
@@ -98,7 +98,7 @@ export const OrderForm: React.FC<OrderForm> = ({ setOrderPlaced }) => {
         </Formik>
       ) : (
         <p className="text-success text-uppercase font-weight-bolder text-center">
-          Twoje zamówienie zostało wysłane. <Link to={routes.shop}>Wróc</Link> na stronę sklepu
+          Twoje zamówienie zostało wysłane. <Link to={ROUTES.SHOP}>Wróc</Link> na stronę sklepu
         </p>
       )}
       <SnackBar toast={backEndPass} setToast={setBackPass} color="success" delay={3000}>

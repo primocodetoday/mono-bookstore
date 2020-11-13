@@ -2,7 +2,7 @@
 import { Navbar, Nav, Badge } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { OrderContext } from 'context/OrderContextProvider';
-import { routes } from 'routes';
+import { ROUTES } from 'routes';
 
 export const TopNav: React.FC = () => {
   const { state } = React.useContext(OrderContext);
@@ -11,7 +11,7 @@ export const TopNav: React.FC = () => {
 
   return (
     <Navbar bg="warning" variant="dark" expand="sm" className="mb-4 " sticky="top">
-      <Navbar.Brand as={NavLink} to={routes.home}>
+      <Navbar.Brand as={NavLink} to={ROUTES.HOME}>
         <i className="fas fa-book-open mr-3" />
         <strong className="text-uppercase">Księgarnia</strong>
       </Navbar.Brand>
@@ -22,11 +22,11 @@ export const TopNav: React.FC = () => {
             className="text-light ml-auto mr-4 text-uppercase font-weight-bolder"
             as={NavLink}
             exact
-            to={routes.home}
+            to={ROUTES.HOME}
           >
             Sklep
           </Nav.Link>
-          <Nav.Link className="text-light ml-auto text-uppercase font-weight-bolder" as={NavLink} to={routes.basket}>
+          <Nav.Link className="text-light ml-auto text-uppercase font-weight-bolder" as={NavLink} to={ROUTES.BASKET}>
             Koszyk
             <Badge className="ml-2 badge-success">{order ? order.length : '0'}</Badge>
           </Nav.Link>

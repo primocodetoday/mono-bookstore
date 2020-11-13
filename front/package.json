@@ -49,6 +49,7 @@
     "@types/react-bootstrap": "^0.32.24",
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
+    "@types/yup": "^0.29.9",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
     "babel-eslint": "^10.1.0",

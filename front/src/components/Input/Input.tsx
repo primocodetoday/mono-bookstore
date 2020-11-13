@@ -1,4 +1,6 @@
-﻿import React from 'react';
+﻿// Delete this later
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { Form } from 'react-bootstrap';
 import { receiverChange } from 'context/actions';
 import { OrderContext } from 'context/OrderContext';

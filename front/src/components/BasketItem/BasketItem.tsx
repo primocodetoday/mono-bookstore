@@ -1,19 +1,20 @@
-﻿import React from 'react';
-import PropTypes from 'prop-types';
+﻿// TODO delete this later
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 import { priceWithComma } from 'helpers/priceWithComma';
 import { OrderContext } from 'context/OrderContext';
 import { removeBook } from 'context/actions';
 
-export type BasketItemProp = {
+export type BasketItemProps = {
   title: string;
   quantity: number;
   price: number;
   id: number;
 };
 
-export const BasketItem: React.FC<BasketItemProp> = ({ title, quantity, price, id }) => {
+export const BasketItem: React.FC<BasketItemProps> = ({ title, quantity, price, id }) => {
   const { dispatch } = React.useContext(OrderContext);
 
   return (
@@ -38,9 +39,9 @@ export const BasketItem: React.FC<BasketItemProp> = ({ title, quantity, price, i
   );
 };
 
-BasketItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  quantity: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-};
+// BasketItem.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   title: PropTypes.string.isRequired,
+//   quantity: PropTypes.number.isRequired,
+//   price: PropTypes.number.isRequired,
+// };

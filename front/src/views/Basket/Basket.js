@@ -11,6 +11,7 @@ import { routes } from 'routes';
 
 const Basket = () => {
   const { state } = React.useContext(OrderContext);
+
   const [basket, setBasket] = React.useState([]);
 
   // Huge state and book combiner

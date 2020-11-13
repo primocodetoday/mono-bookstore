@@ -1,5 +1,7 @@
-﻿import React from 'react';
-import PropTypes from 'prop-types';
+﻿// TODO Delete this later
+/* eslint-disable react/prop-types */
+import React from 'react';
+// import PropTypes from 'prop-types';
 import { Button, Row, Col, Media, Card } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContext';
 import { SnackBar } from 'components/SnackBar/SnackBar';
@@ -49,12 +51,12 @@ export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
   );
 };
 
-BookCard.propTypes = {
-  book: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    cover_url: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    pages: PropTypes.number.isRequired,
-  }).isRequired,
-};
+// BookCard.propTypes = {
+//   book: PropTypes.shape({
+//     id: PropTypes.number.isRequired,
+//     title: PropTypes.string.isRequired,
+//     cover_url: PropTypes.string.isRequired,
+//     author: PropTypes.string.isRequired,
+//     pages: PropTypes.number.isRequired,
+//   }).isRequired,
+// };

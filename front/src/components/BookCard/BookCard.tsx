@@ -5,7 +5,11 @@ import { SnackBar } from 'components/SnackBar/SnackBar';
 import { addBook } from 'context/actions';
 import { Book } from 'views/Bookstore/Bookstore';
 
-export const BookCard: React.FC<{ book: Book }> = ({ book }) => {
+export type BookCardProps = {
+  book: Book;
+};
+
+export const BookCard: React.FC<BookCardProps> = ({ book }) => {
   const { dispatch } = React.useContext(OrderContext);
   const [isAdded, setIsAdded] = React.useState(false);
 

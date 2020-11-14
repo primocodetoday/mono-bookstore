@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { Toast } from 'react-bootstrap';
 
-export type TSnackBar = {
+export type SnackBarProps = {
   toast: boolean;
   setToast: React.Dispatch<React.SetStateAction<boolean>>;
   color?: string;
@@ -9,7 +9,7 @@ export type TSnackBar = {
   children: string;
 };
 
-export const SnackBar: React.FC<TSnackBar> = ({ toast, setToast, children, color = 'primary', delay = 1500 }) => {
+export const SnackBar: React.FC<SnackBarProps> = ({ toast, setToast, children, color = 'primary', delay = 1500 }) => {
   return (
     <Toast
       animation

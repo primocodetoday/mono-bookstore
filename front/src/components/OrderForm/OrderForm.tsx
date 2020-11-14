@@ -9,11 +9,11 @@ import { resetOrder } from 'context/actions';
 import { orderSchema } from 'models/orderSchema';
 import { ROUTES } from 'routes';
 
-export type OrderForm = {
+export type OrderFormProps = {
   setOrderPlaced: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const OrderForm: React.FC<OrderForm> = ({ setOrderPlaced }) => {
+export const OrderForm: React.FC<OrderFormProps> = ({ setOrderPlaced }) => {
   const { state, dispatch } = React.useContext(OrderContext);
   const [backEndPass, setBackPass] = React.useState(false);
   const [backEndRefuse, setBackEndRefuse] = React.useState(false);

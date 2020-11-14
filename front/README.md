@@ -1,10 +1,10 @@
 ### Branches 🔀
 
-🌟 master - Contex API & useReducer : finished
+🌟 ts-context - Contex API & useReducer in TS : finished
+
+🌟 js-context - Contex API & useReducer : finished
 
 🌟 redux - Redux & useSelector/useDispatch : finished
-
-🌟 ts-context - Contex API & useReducer in TS : finished
 
 ### Tech/framework used 🔧
 

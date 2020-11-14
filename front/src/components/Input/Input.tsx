@@ -5,7 +5,7 @@ import { Form } from 'react-bootstrap';
 import { receiverChange } from 'context/actions';
 import { OrderContext } from 'context/OrderContextProvider';
 
-export type Input = {
+export type InputProps = {
   label: string;
   name: string;
   value: string;
@@ -18,7 +18,7 @@ export type Input = {
   touched: boolean | undefined;
 };
 
-export const Input: React.FC<Input> = ({
+export const Input: React.FC<InputProps> = ({
   label,
   name,
   type = 'text',

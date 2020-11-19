@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Col, ListGroup, Button } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContextProvider';
 import { bookstoreAPI } from 'services/bookstoreAPI';

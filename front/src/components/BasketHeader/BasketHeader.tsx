@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 

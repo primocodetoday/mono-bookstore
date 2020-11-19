@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Navbar, Nav, Badge } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { OrderContext } from 'context/OrderContextProvider';

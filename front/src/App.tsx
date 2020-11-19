@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Container } from 'react-bootstrap';
 import { Loader, TopNav } from 'components';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';

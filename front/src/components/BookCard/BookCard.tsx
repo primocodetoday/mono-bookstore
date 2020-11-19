@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Button, Row, Col, Media, Card } from 'react-bootstrap';
 import { OrderContext } from 'context/OrderContextProvider';
 import { SnackBar } from 'components/SnackBar/SnackBar';

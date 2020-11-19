@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Col } from 'react-bootstrap';
 import { Header, OrderForm } from 'components';
 import { OrderContext } from 'context/OrderContextProvider';

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 import { priceWithComma } from 'helpers/priceWithComma';

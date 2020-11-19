@@ -1,5 +1,4 @@
-﻿/* eslint-disable react/prop-types */
-import React from 'react';
+﻿import * as React from 'react';
 
 export type HeaderProps = {
   children: string;

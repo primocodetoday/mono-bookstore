@@ -1,5 +1,4 @@
-﻿import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+﻿import * as React from 'react';
 import { orderReducer, TState } from 'context/reducers';
 import { initialOrderState } from './reducers';
 import { OrderActionTypes } from 'context/actions';
@@ -17,7 +16,7 @@ export const OrderContextProvider: React.FC = ({ children, ...restProps }) => {
     return storage ? JSON.parse(storage) : initialOrderState;
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem('order', JSON.stringify(state));
   }, [state]);
 
@@ -26,8 +25,4 @@ export const OrderContextProvider: React.FC = ({ children, ...restProps }) => {
       {children}
     </OrderContext.Provider>
   );
-};
-
-OrderContextProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };

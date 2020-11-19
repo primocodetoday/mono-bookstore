@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { Col, Row, Pagination } from 'react-bootstrap';
 import { BookCard, Loader, Header } from 'components';

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { OrderContext } from 'context/OrderContextProvider';

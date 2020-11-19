@@ -1,6 +1,7 @@
 ﻿import { TState, IItem } from './index';
 import { IAddBook, IRemoveBook } from '../actions';
 
+// TODO Refactor this functions
 export const deepStateAdd = (state: TState, action: IAddBook): IItem[] => {
   return state.order.map((item) => {
     if (item.id === action.payload.id) {

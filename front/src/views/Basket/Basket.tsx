@@ -24,6 +24,7 @@ const Basket: React.FC = () => {
   const [basket, setBasket] = React.useState([] as BasketItemProps[]);
 
   // Huge state and book combiner
+  // TODO refactor this
   React.useEffect(() => {
     const result = [];
     const items = state.order;

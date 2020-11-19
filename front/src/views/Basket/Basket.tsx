@@ -23,7 +23,6 @@ const Basket: React.FC = () => {
 
   const [basket, setBasket] = React.useState([] as BasketItemProps[]);
 
-  // Huge state and book combiner
   // TODO refactor this
   React.useEffect(() => {
     const result = [];
@@ -50,7 +49,9 @@ const Basket: React.FC = () => {
     });
     arrayFill
       .then((data) => {
-        setBasket(data);
+        setBasket(() => {
+          return [...data];
+        });
       })
       // eslint-disable-next-line no-console
       .catch((err) => console.error(err));

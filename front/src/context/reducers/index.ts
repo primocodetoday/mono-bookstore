@@ -1,6 +1,6 @@
 ﻿/* eslint-disable no-console */
 import { OrderActionTypes, ActionTypes } from '../actions';
-import { deepStateAdd, deepStateSub } from './reducerHelpers';
+import { deepStateChange } from './reducerHelpers';
 
 export type IItem = {
   id: number;
@@ -32,7 +32,7 @@ export const orderReducer = (state = initialOrderState, action: OrderActionTypes
         console.log('Book in order, subtracting quantity');
         return {
           ...state,
-          order: deepStateSub(state, action),
+          order: deepStateChange(state, action),
         };
       }
       console.log('Book deleted');
@@ -45,7 +45,7 @@ export const orderReducer = (state = initialOrderState, action: OrderActionTypes
         console.log('Book in order, adding quantity');
         return {
           ...state,
-          order: deepStateAdd(state, action),
+          order: deepStateChange(state, action),
         };
       }
       console.log('New Book added');

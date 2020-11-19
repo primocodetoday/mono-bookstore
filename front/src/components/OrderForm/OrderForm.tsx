@@ -20,8 +20,8 @@ export const OrderForm: React.FC<OrderFormProps> = ({ setOrderPlaced }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    async function orderBooks() {
-      await bookstoreAPI
+    function orderBooks() {
+      bookstoreAPI
         .post('order', state)
         .then((response) => {
           setOrderPlaced(true);

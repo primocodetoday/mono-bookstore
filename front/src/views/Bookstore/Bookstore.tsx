@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as React from 'react';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { Col, Row, Pagination } from 'react-bootstrap';
@@ -23,17 +24,18 @@ const Bookstore: React.FC = () => {
   const [activePage, setActivePage] = React.useState(1);
 
   React.useEffect(() => {
-    setBooks([]);
-    async function fetchBooks() {
-      await bookstoreAPI
+    // clear state before update
+    setBooks(() => []);
+    function fetchBooks() {
+      bookstoreAPI
         .get(`book?page=${page}`)
         .then((response) => {
           const { data } = response.data;
-          setBooks(data);
-          // eslint-disable-next-line no-console
+          setBooks((prevState) => {
+            return [...prevState, ...data];
+          });
           console.log('Data received', response.status);
         })
-        // eslint-disable-next-line no-console
         .catch((err) => console.error('Server Error', err));
     }
     // simulate delay

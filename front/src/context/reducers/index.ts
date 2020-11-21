@@ -1,6 +1,5 @@
 ﻿/* eslint-disable no-console */
 import { OrderActionTypes, ActionTypes } from '../actions';
-import { deepStateChange } from './reducerHelpers';
 
 export type IItem = {
   id: number;
@@ -15,10 +14,8 @@ export type TState = {
   zip_code: string;
 };
 
-const order: IItem[] = [];
-
-export const initialOrderState = {
-  order,
+export const initialOrderState: TState = {
+  order: [],
   first_name: '',
   last_name: '',
   city: '',
@@ -32,7 +29,14 @@ export const orderReducer = (state = initialOrderState, action: OrderActionTypes
         console.log('Book in order, subtracting quantity');
         return {
           ...state,
-          order: deepStateChange(state, action),
+          order: state.order.map((item) =>
+            item.id === action.payload.id
+              ? {
+                  ...item,
+                  quantity: item.quantity - 1,
+                }
+              : item,
+          ),
         };
       }
       console.log('Book deleted');
@@ -45,7 +49,14 @@ export const orderReducer = (state = initialOrderState, action: OrderActionTypes
         console.log('Book in order, adding quantity');
         return {
           ...state,
-          order: deepStateChange(state, action),
+          order: state.order.map((item) =>
+            item.id === action.payload.id
+              ? {
+                  ...item,
+                  quantity: item.quantity + 1,
+                }
+              : item,
+          ),
         };
       }
       console.log('New Book added');

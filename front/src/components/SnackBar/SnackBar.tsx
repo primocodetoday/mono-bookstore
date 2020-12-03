@@ -9,7 +9,7 @@ export type SnackBarProps = {
   children: string;
 };
 
-export const SnackBar: React.FC<SnackBarProps> = ({ toast, setToast, children, color = 'primary', delay = 1500 }) => {
+export const SnackBar = ({ toast, setToast, children, color = 'primary', delay = 1500 }: SnackBarProps) => {
   return (
     <Toast
       animation

@@ -16,7 +16,7 @@ export type InputProps = {
   touched: boolean | undefined;
 };
 
-export const Input: React.FC<InputProps> = ({
+export const Input = ({
   label,
   name,
   type = 'text',
@@ -25,7 +25,7 @@ export const Input: React.FC<InputProps> = ({
   handleChange,
   error = '',
   touched = false,
-}) => {
+}: InputProps) => {
   const { dispatch } = React.useContext(OrderContext);
 
   return (

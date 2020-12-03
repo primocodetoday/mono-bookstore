@@ -18,7 +18,7 @@ export type Book = {
   pages: number;
 };
 
-const Bookstore: React.FC = () => {
+const Bookstore = () => {
   const [books, setBooks] = React.useState<Book[]>([]);
   const { page } = useParams<ParamTypes>();
   const [activePage, setActivePage] = React.useState(1);

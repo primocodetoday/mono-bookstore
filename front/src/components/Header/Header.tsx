@@ -5,7 +5,7 @@ export type HeaderProps = {
   className?: string;
 };
 
-export const Header: React.FC<HeaderProps> = ({ children, ...restProps }) => {
+export const Header = ({ children, ...restProps }: HeaderProps) => {
   return (
     <header {...restProps}>
       <h4 className="mb-4 text-uppercase">{children}</h4>

@@ -13,7 +13,7 @@ export type OrderFormProps = {
   setOrderPlaced: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const OrderForm: React.FC<OrderFormProps> = ({ setOrderPlaced }) => {
+export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
   const { state, dispatch } = React.useContext(OrderContext);
   const [backEndPass, setBackPass] = React.useState(false);
   const [backEndRefuse, setBackEndRefuse] = React.useState(false);

@@ -12,7 +12,7 @@ export type BasketItemProps = {
   id: number;
 };
 
-export const BasketItem: React.FC<BasketItemProps> = ({ title, quantity, price, id }) => {
+export const BasketItem = ({ title, quantity, price, id }: BasketItemProps) => {
   const { dispatch } = React.useContext(OrderContext);
 
   return (

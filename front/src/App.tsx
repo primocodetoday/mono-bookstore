@@ -12,7 +12,7 @@ const Basket = React.lazy(() => import('views/Basket/Basket'));
 const Order = React.lazy(() => import('views/Order/Order'));
 const Page404 = React.lazy(() => import('views/Page404/Page404'));
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <OrderContextProvider>
       <BrowserRouter>

@@ -22,6 +22,7 @@
   },
   "globals": {},
   "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-console": "warn",
     "linebreak-style": "off",
     "import/prefer-default-export": 0,

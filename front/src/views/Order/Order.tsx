@@ -5,7 +5,7 @@ import { OrderContext } from 'context/OrderContextProvider';
 import { Link } from 'react-router-dom';
 import { ROUTES } from 'routes';
 
-const Order: React.FC = () => {
+const Order = () => {
   const { state } = React.useContext(OrderContext);
   const [wasOrderPlaced, setOrderPlaced] = React.useState(false);
 

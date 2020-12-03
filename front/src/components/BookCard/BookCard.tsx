@@ -9,7 +9,7 @@ export type BookCardProps = {
   book: Book;
 };
 
-export const BookCard: React.FC<BookCardProps> = ({ book }) => {
+export const BookCard = ({ book }: BookCardProps) => {
   const { dispatch } = React.useContext(OrderContext);
   const [isAdded, setIsAdded] = React.useState(false);
 

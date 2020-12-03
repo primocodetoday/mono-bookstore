@@ -18,7 +18,7 @@ export interface BasketItemType extends BasketItemProps {
   price: number;
 }
 
-const Basket: React.FC = () => {
+const Basket = () => {
   const { state } = React.useContext(OrderContext);
 
   const [basket, setBasket] = React.useState([] as BasketItemProps[]);
@@ -57,11 +57,14 @@ const Basket: React.FC = () => {
       .catch((err) => console.error(err));
   }, [state]);
 
-  const basketList = basket.length
-    ? basket.map(({ title, quantity, price, id }) => {
-        return <BasketItem key={id} title={title} quantity={quantity} price={price} id={id} />;
-      })
-    : null;
+  const basketList = React.useMemo(() => {
+    const list = basket.length
+      ? basket.map(({ title, quantity, price, id }) => {
+          return <BasketItem key={id} title={title} quantity={quantity} price={price} id={id} />;
+        })
+      : null;
+    return list;
+  }, [basket]);
 
   return (
     <Col xs={12} md={10} lg={10} xl={8} className="px-1 mx-auto">

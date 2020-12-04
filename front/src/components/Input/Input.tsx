@@ -8,10 +8,8 @@ export type InputProps = {
   name: string;
   value: string;
   type?: string;
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
-  // FIXME handleChange refactor
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleChange: (e: React.FormEvent<any>) => void;
+  onBlur: (e: React.FocusEvent) => void;
+  handleChange: (e: React.ChangeEvent) => void;
   error: string | undefined;
   touched: boolean | undefined;
 };

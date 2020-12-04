@@ -18,7 +18,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
   const [backEndPass, setBackPass] = React.useState(false);
   const [backEndRefuse, setBackEndRefuse] = React.useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     function orderBooks() {
       bookstoreAPI

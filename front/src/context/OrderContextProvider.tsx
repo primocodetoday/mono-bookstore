@@ -3,12 +3,12 @@ import { orderReducer, TState } from 'context/reducers';
 import { initialOrderState } from './reducers';
 import { OrderActionTypes } from 'context/actions';
 
-export interface Context {
-  state: TState;
+export interface AppContext {
+  readonly state: TState;
   dispatch: React.Dispatch<OrderActionTypes>;
 }
 
-export const OrderContext = React.createContext({} as Context);
+export const OrderContext = React.createContext<AppContext | null>(null);
 
 export const OrderContextProvider: React.FC = ({ children, ...restProps }) => {
   const [state, dispatch] = React.useReducer(orderReducer, initialOrderState, () => {

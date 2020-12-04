@@ -1,6 +1,5 @@
 ﻿import * as React from 'react';
 import { Col, ListGroup, Button } from 'react-bootstrap';
-import { OrderContext } from 'context/OrderContextProvider';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { Header, BasketHeader, BasketItem } from 'components';
 import { Link } from 'react-router-dom';
@@ -9,6 +8,7 @@ import { summaryBalance } from 'helpers/summaryBalance';
 import { ROUTES } from 'routes';
 import { BasketItemProps } from 'components/BasketItem/BasketItem';
 import { IItem } from 'context/reducers';
+import { useOrderContext } from 'hooks/useOrderContext';
 
 export interface BasketItemType extends BasketItemProps {
   author: string;
@@ -19,7 +19,7 @@ export interface BasketItemType extends BasketItemProps {
 }
 
 const Basket = () => {
-  const { state } = React.useContext(OrderContext);
+  const { state } = useOrderContext();
 
   const [basket, setBasket] = React.useState([] as BasketItemProps[]);
 

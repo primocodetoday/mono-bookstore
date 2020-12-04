@@ -1,16 +1,16 @@
 ﻿import * as React from 'react';
 import { Button, Row, Col, Media, Card } from 'react-bootstrap';
-import { OrderContext } from 'context/OrderContextProvider';
 import { SnackBar } from 'components/SnackBar/SnackBar';
 import { addBook } from 'context/actions';
 import { Book } from 'views/Bookstore/Bookstore';
+import { useOrderContext } from 'hooks/useOrderContext';
 
 export type BookCardProps = {
   book: Book;
 };
 
 export const BookCard = ({ book }: BookCardProps) => {
-  const { dispatch } = React.useContext(OrderContext);
+  const { dispatch } = useOrderContext();
   const [isAdded, setIsAdded] = React.useState(false);
 
   const { id, title, cover_url: coverUrl, author, pages } = book;

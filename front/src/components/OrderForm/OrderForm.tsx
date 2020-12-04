@@ -1,20 +1,20 @@
 ﻿import * as React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
-import { OrderContext } from 'context/OrderContextProvider';
 import { bookstoreAPI } from 'services/bookstoreAPI';
 import { SnackBar, Input } from 'components';
 import { Link } from 'react-router-dom';
 import { resetOrder } from 'context/actions';
 import { orderSchema } from 'models/orderSchema';
 import { ROUTES } from 'routes';
+import { useOrderContext } from 'hooks/useOrderContext';
 
 export type OrderFormProps = {
   setOrderPlaced: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
-  const { state, dispatch } = React.useContext(OrderContext);
+  const { state, dispatch } = useOrderContext();
   const [backEndPass, setBackPass] = React.useState(false);
   const [backEndRefuse, setBackEndRefuse] = React.useState(false);
 

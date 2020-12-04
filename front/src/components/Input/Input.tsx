@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { Form } from 'react-bootstrap';
 import { receiverChange } from 'context/actions';
-import { OrderContext } from 'context/OrderContextProvider';
+import { useOrderContext } from 'hooks/useOrderContext';
 
 export type InputProps = {
   label: string;
@@ -26,7 +26,7 @@ export const Input = ({
   error = '',
   touched = false,
 }: InputProps) => {
-  const { dispatch } = React.useContext(OrderContext);
+  const { dispatch } = useOrderContext();
 
   return (
     <Form.Group>

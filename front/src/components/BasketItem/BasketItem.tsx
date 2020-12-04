@@ -2,8 +2,8 @@
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
 import { priceWithComma } from 'helpers/priceWithComma';
-import { OrderContext } from 'context/OrderContextProvider';
 import { removeBook } from 'context/actions';
+import { useOrderContext } from 'hooks/useOrderContext';
 
 export type BasketItemProps = {
   title: string;
@@ -13,7 +13,7 @@ export type BasketItemProps = {
 };
 
 export const BasketItem = ({ title, quantity, price, id }: BasketItemProps) => {
-  const { dispatch } = React.useContext(OrderContext);
+  const { dispatch } = useOrderContext();
 
   return (
     <ListGroup.Item variant="secondary" as="li" className="mb-3 px-3 rounded border">

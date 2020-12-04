@@ -1,12 +1,12 @@
 ﻿import * as React from 'react';
 import { Col } from 'react-bootstrap';
 import { Header, OrderForm } from 'components';
-import { OrderContext } from 'context/OrderContextProvider';
 import { Link } from 'react-router-dom';
 import { ROUTES } from 'routes';
+import { useOrderContext } from 'hooks/useOrderContext';
 
 const Order = () => {
-  const { state } = React.useContext(OrderContext);
+  const { state } = useOrderContext();
   const [wasOrderPlaced, setOrderPlaced] = React.useState(false);
 
   const { order } = state;

@@ -1,0 +1,21 @@
+﻿{
+  "shared": {
+    "shop": "Sklep",
+    "basket": "Koszyk"
+  },
+  "order": {
+    "first_name": "Imię",
+    "last_name": "Nazwisko",
+    "city": "Miasto",
+    "zip_code": "Kod pocztowy",
+    "order_and_pay": "Zamawiam i płacę",
+    "your_order_has_been_sent": "Twoje zamówienie zostało wysłane.",
+    "back": "Wróc",
+    "to_bookstore": "na stronę sklepu"
+  },
+  "snack": {
+    "order_has_been_sent": "Zamówienie zostało wysłane",
+    "correct_order": "Popraw zamówienie"
+  },
+  "bookstore": "Księgarnia"
+}

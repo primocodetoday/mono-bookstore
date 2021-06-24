@@ -8,6 +8,7 @@ import { resetOrder } from 'context/actions';
 import { orderSchema } from 'models/orderSchema';
 import { ROUTES } from 'routes';
 import { useOrderContext } from 'hooks/useOrderContext';
+import { useTranslation } from 'react-i18next';
 
 export type OrderFormProps = {
   setOrderPlaced: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,6 +18,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
   const { state, dispatch } = useOrderContext();
   const [backEndPass, setBackPass] = React.useState(false);
   const [backEndRefuse, setBackEndRefuse] = React.useState(false);
+  const { t } = useTranslation();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,7 +57,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
           {({ handleChange, handleBlur, values, touched, errors }) => (
             <Form className="d-flex flex-column" onSubmit={(e) => handleSubmit(e)}>
               <Input
-                label="Imię"
+                label={t('order.first_name')}
                 name="first_name"
                 value={values.first_name}
                 onBlur={handleBlur}
@@ -64,7 +66,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
                 touched={touched.first_name}
               />
               <Input
-                label="Nazwisko"
+                label={t('order.last_name')}
                 name="last_name"
                 value={values.last_name}
                 onBlur={handleBlur}
@@ -73,7 +75,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
                 touched={touched.last_name}
               />
               <Input
-                label="Miasto"
+                label={t('order.city')}
                 name="city"
                 value={values.city}
                 onBlur={handleBlur}
@@ -82,7 +84,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
                 touched={touched.city}
               />
               <Input
-                label="Kod pocztowy"
+                label={t('order.zip_code')}
                 name="zip_code"
                 value={values.zip_code}
                 onBlur={handleBlur}
@@ -91,21 +93,22 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
                 touched={touched.zip_code}
               />
               <Button variant="outline-warning" type="submit" className="text-uppercase font-weight-bolder  mx-auto">
-                Zamawiam i płacę
+                {t('order.order_and_pay')}
               </Button>
             </Form>
           )}
         </Formik>
       ) : (
         <p className="text-success text-uppercase font-weight-bolder text-center">
-          Twoje zamówienie zostało wysłane. <Link to={ROUTES.SHOP}>Wróc</Link> na stronę sklepu
+          {t('order.your_order_has_been_sent')} <Link to={ROUTES.SHOP}>{t('order.back')}</Link>
+          {t('order.to_bookstore')}
         </p>
       )}
       <SnackBar toast={backEndPass} setToast={setBackPass} color="success" delay={3000}>
-        Zamówienie zostało wysłane
+        {t('snack.order_has_been_sent')}
       </SnackBar>
       <SnackBar toast={backEndRefuse} setToast={setBackEndRefuse} color="danger" delay={3000}>
-        Popraw zamówienie
+        {t('snack.correct_order')}
       </SnackBar>
     </Col>
   );

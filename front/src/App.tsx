@@ -14,25 +14,27 @@ const Page404 = React.lazy(() => import('views/Page404/Page404'));
 
 const App = () => {
   return (
-    <OrderContextProvider>
-      <BrowserRouter>
-        <TopNav />
-        <Container as="main">
-          <Switch>
-            <Redirect exact from={ROUTES.HOME} to={ROUTES.SHOP_1} />
-            <React.Suspense fallback={<Loader />}>
-              <Route exact path={ROUTES.SHOP}>
-                <Redirect to={ROUTES.SHOP_1} />
-              </Route>
-              <Route path={ROUTES.SHOP_PARAMS} component={Bookstore} />
-              <Route path={ROUTES.BASKET} component={Basket} />
-              <Route path={ROUTES.ORDER} component={Order} />
-            </React.Suspense>
-            <Route path="*" component={Page404} />
-          </Switch>
-        </Container>
-      </BrowserRouter>
-    </OrderContextProvider>
+    <React.Suspense fallback={<div>loading</div>}>
+      <OrderContextProvider>
+        <BrowserRouter>
+          <TopNav />
+          <Container as="main">
+            <Switch>
+              <Redirect exact from={ROUTES.HOME} to={ROUTES.SHOP_1} />
+              <React.Suspense fallback={<Loader />}>
+                <Route exact path={ROUTES.SHOP}>
+                  <Redirect to={ROUTES.SHOP_1} />
+                </Route>
+                <Route path={ROUTES.SHOP_PARAMS} component={Bookstore} />
+                <Route path={ROUTES.BASKET} component={Basket} />
+                <Route path={ROUTES.ORDER} component={Order} />
+              </React.Suspense>
+              <Route path="*" component={Page404} />
+            </Switch>
+          </Container>
+        </BrowserRouter>
+      </OrderContextProvider>
+    </React.Suspense>
   );
 };
 

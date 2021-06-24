@@ -1,3 +1,7 @@
+### About app
+
+It's a simple bookstore application created for the recruitment task and currently being expanded to get to know React better. 🆙
+
 ### Branches 🔀
 
 🌟 master - Contex API & useReducer in TS

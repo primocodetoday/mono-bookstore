@@ -2,14 +2,10 @@
 
 // orderSchema rules based on backend module
 export const orderSchema = Yup.object({
-  first_name: Yup.string().required('Podaj imię').min(4, 'Imię zbyt krótkie').max(50, 'Imię zbyt długie'),
-  last_name: Yup.string()
-    .required('Podaj nazwisko')
-    .min(5, 'Nazwisko zbyt krótkie')
-    .max(50, 'Nazwisko zbyt długie')
-    .required('Podaj nazwisko'),
-  city: Yup.string().required('Podaj nazwę miasta'),
+  first_name: Yup.string().required('yup.enter_name').min(4, 'yup.name_to_short').max(50, 'yup.name_to_long'),
+  last_name: Yup.string().required('yup.enter_surname').min(5, 'yup.surname_to_short').max(50, 'yup.surname_to_long'),
+  city: Yup.string().required('yup.enter_city'),
   zip_code: Yup.string()
-    .required('Podaj kod pocztowy')
-    .matches(/\d{2}-\d{3}/, 'Kod nieprawidłowy'),
+    .required('yup.enter_zip_code')
+    .matches(/\d{2}-\d{3}/, 'yup.invalid_zip_code'),
 });

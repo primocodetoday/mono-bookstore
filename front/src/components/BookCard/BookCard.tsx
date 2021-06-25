@@ -4,6 +4,7 @@ import { SnackBar } from 'components/SnackBar/SnackBar';
 import { addBook } from 'context/actions';
 import { Book } from 'views/Bookstore/Bookstore';
 import { useOrderContext } from 'hooks/useOrderContext';
+import { useTranslation } from 'react-i18next';
 
 export type BookCardProps = {
   book: Book;
@@ -12,7 +13,7 @@ export type BookCardProps = {
 export const BookCard = ({ book }: BookCardProps) => {
   const { dispatch } = useOrderContext();
   const [isAdded, setIsAdded] = React.useState(false);
-
+  const { t } = useTranslation();
   const { id, title, cover_url: coverUrl, author, pages } = book;
 
   return (
@@ -28,10 +29,10 @@ export const BookCard = ({ book }: BookCardProps) => {
             <p className="h6 mx-auto mb-2 text-uppercase">{book.title}</p>
           </div>
           <p>
-            Autorzy: <strong>{author}</strong>
+            {t('item.authors')}: <strong>{author}</strong>
           </p>
           <p>
-            Liczba stron: <strong>{pages}</strong>
+            {t('item.page_number')}: <strong>{pages}</strong>
           </p>
         </Col>
       </Row>
@@ -43,10 +44,10 @@ export const BookCard = ({ book }: BookCardProps) => {
           setIsAdded(true);
         }}
       >
-        Do koszyka
+        {t('item.add_to_basket')}
       </Button>
       <SnackBar toast={isAdded} setToast={setIsAdded} color="success">
-        Pozycja została dodana
+        {t('item.item_has_been_added')}
       </SnackBar>
     </Card>
   );

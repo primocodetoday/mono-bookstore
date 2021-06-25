@@ -62,7 +62,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
                 value={values.first_name}
                 onBlur={handleBlur}
                 handleChange={handleChange}
-                error={errors.first_name}
+                error={t(errors.first_name)}
                 touched={touched.first_name}
               />
               <Input
@@ -71,7 +71,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
                 value={values.last_name}
                 onBlur={handleBlur}
                 handleChange={handleChange}
-                error={errors.last_name}
+                error={t(errors.last_name)}
                 touched={touched.last_name}
               />
               <Input
@@ -80,7 +80,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
                 value={values.city}
                 onBlur={handleBlur}
                 handleChange={handleChange}
-                error={errors.city}
+                error={t(errors.city)}
                 touched={touched.city}
               />
               <Input
@@ -89,7 +89,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
                 value={values.zip_code}
                 onBlur={handleBlur}
                 handleChange={handleChange}
-                error={errors.zip_code}
+                error={t(errors.zip_code)}
                 touched={touched.zip_code}
               />
               <Button variant="outline-warning" type="submit" className="text-uppercase font-weight-bolder  mx-auto">

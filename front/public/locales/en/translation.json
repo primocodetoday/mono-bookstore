@@ -17,5 +17,23 @@
     "order_has_been_sent": "The order has been sent",
     "correct_order": "Correct the order"
   },
-  "bookstore": "Bookstore"
+  "bookstore": "Bookstore",
+  "item": {
+    "authors": "Authors",
+    "page_number": "Number of pages",
+    "add_to_basket": "Add to basket",
+    "item_has_been_added": "The item has been added"
+  },
+  "loading": "Loading",
+  "yup": {
+    "enter_name": "Enter your name",
+    "name_to_short": "Your name is too short",
+    "name_to_long": "Your name is too long",
+    "enter_surname": "Enter your surname",
+    "surname_to_short": "Your last name is too long",
+    "surname_to_long": "Your last name is too long",
+    "enter_city": "Enter the name of the city",
+    "enter_zip_code": "Enter your zip code",
+    "invalid_zip_code": "Invalid zip code"
+  }
 }

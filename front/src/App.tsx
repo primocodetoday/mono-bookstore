@@ -14,7 +14,7 @@ const Page404 = React.lazy(() => import('views/Page404/Page404'));
 
 const App = () => {
   return (
-    <React.Suspense fallback={<div>loading</div>}>
+    <React.Suspense fallback={<Loader />}>
       <OrderContextProvider>
         <BrowserRouter>
           <TopNav />

@@ -4,10 +4,12 @@ import { Header, OrderForm } from 'components';
 import { Link } from 'react-router-dom';
 import { ROUTES } from 'routes';
 import { useOrderContext } from 'hooks/useOrderContext';
+import { useTranslation } from 'react-i18next';
 
 const Order = () => {
   const { state } = useOrderContext();
   const [wasOrderPlaced, setOrderPlaced] = React.useState(false);
+  const { t } = useTranslation();
 
   const { order } = state;
 
@@ -18,8 +20,7 @@ const Order = () => {
         <OrderForm setOrderPlaced={setOrderPlaced} />
       ) : (
         <p className="text-center">
-          Ta strona jest niedostępna dla Ciebie dopóki nie dodasz pozycji do koszyka. <Link to={ROUTES.SHOP}>Wróc</Link>{' '}
-          na stronę sklepu
+          {t('order.no_items_info')}. <Link to={ROUTES.SHOP}>{t('order.back')}</Link> {t('order.to_bookstore')}
         </p>
       )}
     </Col>

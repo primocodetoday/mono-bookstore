@@ -9,6 +9,7 @@ import { ROUTES } from 'routes';
 import { BasketItemProps } from 'components/BasketItem/BasketItem';
 import { IItem } from 'context/reducers';
 import { useOrderContext } from 'hooks/useOrderContext';
+import { useTranslation } from 'react-i18next';
 
 export interface BasketItemType extends BasketItemProps {
   author: string;
@@ -20,6 +21,7 @@ export interface BasketItemType extends BasketItemProps {
 
 const Basket = () => {
   const { state } = useOrderContext();
+  const { t } = useTranslation();
 
   const [basket, setBasket] = React.useState([] as BasketItemProps[]);
 
@@ -68,10 +70,10 @@ const Basket = () => {
 
   return (
     <Col xs={12} md={10} lg={10} xl={8} className="px-1 mx-auto">
-      <Header>Koszyk</Header>
+      <Header>{t('shared.basket')}</Header>
       {!basket.length ? (
         <p className="mb-4 text-uppercase font-weight-bolder text-center">
-          Nie dodałeś jeszcze nic do koszyka. Dodaj pozycje na stronie <Link to={ROUTES.SHOP}>sklepu</Link>
+          {t('basket.no_items_1')} <Link to={ROUTES.SHOP}>{t('basket.no_item_2')}</Link>
         </p>
       ) : (
         <Col as="section" className="px-0 mb-5">
@@ -79,7 +81,7 @@ const Basket = () => {
           <ListGroup as="ul">{basketList}</ListGroup>
           <div className="mt-2 flex-column d-flex justify-content-end align-items-end">
             <p className="h6">
-              Wartość twoich zakupów to{' '}
+              {t('basket.value')}{' '}
               <strong>{summaryBalance(basket) ? priceWithComma(summaryBalance(basket)) : 0} zł</strong>
             </p>
             <Button
@@ -88,7 +90,7 @@ const Basket = () => {
               as={Link}
               to={ROUTES.ORDER}
             >
-              Zamawiam
+              {t('basket.order')}
             </Button>
           </div>
         </Col>

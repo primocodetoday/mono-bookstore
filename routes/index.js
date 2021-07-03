@@ -1,20 +1,25 @@
-﻿import { Router } from 'express';
+const express = require('express');
 
-const router = Router();
+const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  res.send('Hello World');
+router.get('/', (req, res) => {
+  res.render('index', { text: 'This is the dynamic data. Open index.js from the routes directory to see.' });
 });
 
-router.get('/json', (req, res, next) => {
-  const data = {
-    greeting: 'Hello',
-  };
-  res.send(data);
+router.get('/json', (req, res) => {
+  res.json({
+    confirmation: 'success',
+    app: process.env.TURBO_APP_ID,
+    data: 'this is a sample json route.',
+  });
 });
 
-router.get('/home', (req, res, next) => {
-  res.render('home', null);
+router.get('/send', (req, res) => {
+  res.send('This is the Send Route');
 });
 
-export default router;
+router.get('/redirect', (req, res) => {
+  res.redirect('https://www.turbo360.co/landing');
+});
+
+module.exports = router;

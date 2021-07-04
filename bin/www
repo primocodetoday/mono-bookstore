@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
+const http = require('http');
 const app = require('../app');
 const debug = require('debug')('exp-test:server');
-const http = require('http');
 
 /* Get port from environment and store in Express. */
 

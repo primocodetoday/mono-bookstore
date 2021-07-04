@@ -1,4 +1,3 @@
-// Full Documentation - https://docs.turbo360.co
 const express = require('express');
 
 const router = express.Router();
@@ -7,7 +6,7 @@ router.get('/:resource', (req, res) => {
   res.json({
     confirmation: 'success',
     resource: req.params.resource,
-    query: req.query, // from the url query string
+    query: req.query,
   });
 });
 
@@ -16,7 +15,7 @@ router.get('/:resource/:id', (req, res) => {
     confirmation: 'success',
     resource: req.params.resource,
     id: req.params.id,
-    query: req.query, // from the url query string
+    query: req.query,
   });
 });
 

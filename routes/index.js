@@ -6,11 +6,24 @@ router.get('/', (req, res) => {
   res.render('index', { text: 'This is the dynamic data. Open index.js from the routes directory to see.' });
 });
 
-router.get('/json', (req, res) => {
+router.get('/profile', (req, res, next) => {
+  const { name, occupation } = req.query;
+
+  const data = {
+    name,
+    occupation,
+  };
+
+  res.render('profile', data);
+});
+
+router.get('/:path', (req, res) => {
+  const { path } = req.params;
+
   res.json({
     confirmation: 'success',
     app: process.env.TURBO_APP_ID,
-    data: 'this is a sample json route.',
+    data: path,
   });
 });
 

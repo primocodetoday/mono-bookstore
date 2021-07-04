@@ -2,37 +2,53 @@ const express = require('express');
 
 const router = express.Router();
 
+const profiles = {
+  freward: {
+    name: 'Francesca',
+    company: 'Jit',
+    languages: ['javascript', 'php'],
+  },
+  jachiv: {
+    name: 'John',
+    company: 'PGE',
+    languages: ['python', 'c#'],
+  },
+  bgates: {
+    name: 'Bill',
+    company: 'MediaE',
+    languages: ['golang', 'java'],
+  },
+};
+
 router.get('/', (req, res) => {
   res.render('index', { text: 'This is the dynamic data. Open index.js from the routes directory to see.' });
 });
 
-router.get('/profile', (req, res, next) => {
-  const { name, occupation } = req.query;
+router.get('/profile/:username', (req, res, next) => {
+  const { username } = req.params;
 
-  const data = {
-    name,
-    occupation,
-  };
+  const current = profiles[username];
 
-  res.render('profile', data);
+  if (!current) {
+    res.json({
+      confirmation: 'fail',
+      message: `Profile ${username} doesn't exist`,
+    });
+    return;
+  }
+
+  res.render('profile', current);
 });
 
-router.get('/:path', (req, res) => {
-  const { path } = req.params;
+router.post('/addprofile', (req, res, next) => {
+  const { body } = req;
 
-  res.json({
-    confirmation: 'success',
-    app: process.env.TURBO_APP_ID,
-    data: path,
-  });
-});
+  if (!Array.isArray(body.languages)) {
+    const proper = body.languages.split(', ').map((str) => str.trim());
+    body.languages = proper;
+  }
 
-router.get('/send', (req, res) => {
-  res.send('This is the Send Route');
-});
-
-router.get('/redirect', (req, res) => {
-  res.redirect('https://www.turbo360.co/landing');
+  console.log(body);
 });
 
 module.exports = router;

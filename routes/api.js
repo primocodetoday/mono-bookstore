@@ -1,4 +1,3 @@
-// Full Documentation - https://www.turbo360.co/docs
 const express = require('express');
 const router = express.Router();
 const Book = require('../models/book');
@@ -20,7 +19,7 @@ const getBook = async (req, res, next) => {
 };
 
 // Getting all
-router.get('/', async (req, res) => {
+router.get('/books', async (req, res) => {
   try {
     const books = await Book.find();
     res.json(books);
@@ -30,17 +29,19 @@ router.get('/', async (req, res) => {
 });
 
 // Getting one
-router.get('/:id', getBook, (req, res) => {
+router.get('/books/:id', getBook, (req, res) => {
   res.send(res.book);
 });
 
 // Store
-router.post('/', async (req, res) => {
+router.post('/books', async (req, res) => {
   const book = new Book({
-    name: req.body.name,
+    title: req.body.title,
     author: req.body.author,
-    description: req.body.description,
+    cover_url: req.body.cover_url,
+    pages: req.body.pages,
     price: req.body.price,
+    currency: req.body.currency,
   });
 
   try {
@@ -52,9 +53,9 @@ router.post('/', async (req, res) => {
 });
 
 // Update
-router.patch('/:id', getBook, async (req, res) => {
+router.patch('/books/:id', getBook, async (req, res) => {
   if (req.body.name !== null) {
-    res.book.name = req.body.name;
+    res.book.title = req.body.title;
   }
 
   try {
@@ -66,10 +67,10 @@ router.patch('/:id', getBook, async (req, res) => {
 });
 
 // Delete
-router.delete('/:id', getBook, async (req, res) => {
+router.delete('/books/:id', getBook, async (req, res) => {
   try {
     await res.book.remove();
-    res.json({ message: `Deleted book - ${res.book.name}` });
+    res.json({ message: `Deleted book - ${res.book.title}` });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

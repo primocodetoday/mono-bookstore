@@ -1,13 +1,5 @@
 {
-  "cSpell.words": [
-    "autohide"
-  ],
-  "todo-tree.tree.showBadges": false,
-  "todo-tree.tree.showCountsInTree": true,
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "i18n-ally.editor.preferEditor": true,
-  "i18n-ally.localesPaths": "front/public/locales",
-  "i18n-ally.enabledFrameworks": ["react", "i18next", "general"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.localesPaths": [
+    "public/locales"
+  ]
 }

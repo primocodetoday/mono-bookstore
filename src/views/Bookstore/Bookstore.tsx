@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import * as React from 'react';
-import { bookstoreAPI } from 'services/bookstoreAPI';
+import { bookstoreAPI as api } from 'services/bookstoreAPI';
 import { Col, Row, Pagination } from 'react-bootstrap';
 import { BookCard, Loader, Header } from 'components';
 import { useParams, useHistory } from 'react-router-dom';
@@ -27,8 +27,8 @@ const Bookstore = () => {
     // clear state before update
     setBooks(() => []);
     function fetchBooks() {
-      bookstoreAPI
-        .get(`book?page=${page}`)
+      api
+        .get(`books?page=${page}`)
         .then((response) => {
           const { data } = response.data;
           setBooks((prevState) => {

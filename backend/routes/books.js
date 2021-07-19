@@ -3,9 +3,19 @@ const router = express.Router();
 const Book = require('../models/BookModel');
 const getBook = require('../middleware/getBook');
 
+const getBookWithCoverUrl = (req, book) => {
+  if (!book.cover_url.match(/^http/)) {
+    book.cover_url = `${req.protocol}://${req.get('host')}${book.cover_url}`;
+  }
+  return book;
+};
+
 // Getting all
 router.get('/', async (req, res) => {
   const searchOptions = {};
+
+  const page = +req.query.page || 1;
+  const limit = 10;
 
   if (req.query.title) {
     searchOptions.title = new RegExp(req.query.title, 'i');
@@ -13,7 +23,16 @@ router.get('/', async (req, res) => {
 
   try {
     const books = await Book.find(searchOptions);
-    res.json({ books, search: req.query });
+    const result = books.slice((page - 1) * limit, page * limit).map((book) => getBookWithCoverUrl(req, book));
+
+    res.status(200).json({
+      data: result,
+      metadata: {
+        page,
+        records_per_page: limit,
+        total_records: books.length,
+      },
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

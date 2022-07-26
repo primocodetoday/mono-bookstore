@@ -4,19 +4,14 @@ It's a simple bookstore application created for the recruitment task and current
 
 ### Branches 🔀
 
-🌟 master - Contex API & useReducer in TS
-
-🌟 js-context - Contex API & useReducer
-
-🌟 redux - Redux & useSelector/useDispatch
+🌟 Contex API & useReducer in TS
 
 ### Tech/framework used 🔧
 
 | Main Tech | React                             |
 | --------- | --------------------------------- |
-| Addons    | Axios, Formik, Yup, Redux, Lodash |
+| Addons    | Axios, Formik, Yup, Lodash |
 | Styles    | Bootstrap, React-Bootstrap        |
-| Backend   | Express                           |
 
 ### Scripts
 

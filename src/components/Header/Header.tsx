@@ -6,9 +6,9 @@ export type HeaderProps = {
 };
 
 export const Header = ({ children, ...restProps }: HeaderProps) => {
-  return (
-    <header {...restProps}>
-      <h4 className="mb-4 text-uppercase">{children}</h4>
-    </header>
-  );
+	return (
+		<header {...restProps}>
+			<h4 className="mb-4 text-uppercase">{children}</h4>
+		</header>
+	);
 };

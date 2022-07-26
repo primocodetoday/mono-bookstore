@@ -15,33 +15,33 @@ export type InputProps = {
 };
 
 export const Input = ({
-  label,
-  name,
-  type = 'text',
-  value,
-  onBlur,
-  handleChange,
-  error = '',
-  touched = false,
+	label,
+	name,
+	type = 'text',
+	value,
+	onBlur,
+	handleChange,
+	error = '',
+	touched = false,
 }: InputProps) => {
-  const { dispatch } = useOrderContext();
+	const { dispatch } = useOrderContext();
 
-  return (
-    <Form.Group>
-      <Form.Label>{label}</Form.Label>
-      <Form.Control
-        name={name}
-        type={type}
-        value={value}
-        onBlur={onBlur}
-        onChange={(e) => {
-          handleChange(e);
-          dispatch(receiverChange(e.currentTarget.name, e.currentTarget.value));
-        }}
-        isInvalid={!!error && touched}
-        isValid={!error && touched}
-      />
-      <Form.Control.Feedback type="invalid">{error && touched && error}</Form.Control.Feedback>
-    </Form.Group>
-  );
+	return (
+		<Form.Group>
+			<Form.Label>{label}</Form.Label>
+			<Form.Control
+				name={name}
+				type={type}
+				value={value}
+				onBlur={onBlur}
+				onChange={(e) => {
+					handleChange(e);
+					dispatch(receiverChange(e.currentTarget.name, e.currentTarget.value));
+				}}
+				isInvalid={!!error && touched}
+				isValid={!error && touched}
+			/>
+			<Form.Control.Feedback type="invalid">{error && touched && error}</Form.Control.Feedback>
+		</Form.Group>
+	);
 };

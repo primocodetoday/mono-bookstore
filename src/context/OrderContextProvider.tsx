@@ -11,18 +11,19 @@ export interface AppContext {
 export const OrderContext = React.createContext<AppContext | null>(null);
 
 export const OrderContextProvider: React.FC = ({ children, ...restProps }) => {
-  const [state, dispatch] = React.useReducer(orderReducer, initialOrderState, () => {
-    const storage = localStorage.getItem('order');
-    return storage ? JSON.parse(storage) : initialOrderState;
-  });
+	const [state, dispatch] = React.useReducer(orderReducer, initialOrderState, () => {
+		const storage = localStorage.getItem('order');
+		return storage ? JSON.parse(storage) : initialOrderState;
+	});
 
-  React.useEffect(() => {
-    localStorage.setItem('order', JSON.stringify(state));
-  }, [state]);
+	React.useEffect(() => {
+		localStorage.setItem('order', JSON.stringify(state));
+	}, [state]);
 
-  return (
-    <OrderContext.Provider {...restProps} value={{ state, dispatch }}>
-      {children}
-    </OrderContext.Provider>
-  );
+	return (
+		<OrderContext.Provider {...restProps}
+			value={{ state, dispatch }}>
+			{children}
+		</OrderContext.Provider>
+	);
 };

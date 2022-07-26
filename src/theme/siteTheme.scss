@@ -2,14 +2,15 @@
 @import 'bootstrap/scss/_variables';
 
 $theme-colors: (
-  'warning': #14213d,
+    'warning': #14213d,
 );
 
 li {
-  list-style-type: none;
+    list-style-type: none;
 }
+
 ul {
-  padding-inline-start: 0px;
+    padding-inline-start: 0px;
 }
 
 @import 'bootstrap/scss/bootstrap';

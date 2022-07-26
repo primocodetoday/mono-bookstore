@@ -13,10 +13,10 @@ export interface IRemoveBook {
 }
 
 export const removeBook = (_id: string): IRemoveBook => {
-  return {
-    type: ActionTypes.REMOVE_BOOK,
-    payload: { _id },
-  };
+	return {
+		type: ActionTypes.REMOVE_BOOK,
+		payload: { _id },
+	};
 };
 
 export interface IAddBook {
@@ -25,8 +25,8 @@ export interface IAddBook {
 }
 
 export const addBook = (_id: string): IAddBook => ({
-  type: ActionTypes.ADD_BOOK,
-  payload: { _id, quantity: 1 },
+	type: ActionTypes.ADD_BOOK,
+	payload: { _id, quantity: 1 },
 });
 
 export type Input = {
@@ -39,8 +39,8 @@ export interface IReceiverChange {
 }
 
 export const receiverChange = (name: string, value: string): IReceiverChange => ({
-  type: ActionTypes.RECEIVER_CHANGE,
-  payload: { [name]: value },
+	type: ActionTypes.RECEIVER_CHANGE,
+	payload: { [name]: value },
 });
 
 export interface IResetOrder {
@@ -48,7 +48,7 @@ export interface IResetOrder {
 }
 
 export const resetOrder = (): IResetOrder => ({
-  type: ActionTypes.RESET_ORDER,
+	type: ActionTypes.RESET_ORDER,
 });
 
 export type OrderActionTypes = IRemoveBook | IAddBook | IReceiverChange | IResetOrder;

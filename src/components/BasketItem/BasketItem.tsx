@@ -6,13 +6,13 @@ import { removeBook } from 'context/actions';
 import { useOrderContext } from 'hooks/useOrderContext';
 
 export type BasketItemProps = {
+  _id: string;
   title: string;
   quantity: number;
   price: number;
-  id: number;
 };
 
-export const BasketItem = ({ title, quantity, price, id }: BasketItemProps) => {
+export const BasketItem = ({ title, quantity, price, _id }: BasketItemProps) => {
   const { dispatch } = useOrderContext();
 
   return (
@@ -28,7 +28,7 @@ export const BasketItem = ({ title, quantity, price, id }: BasketItemProps) => {
           <p className="h6 text-center">{priceWithComma(price)} zł</p>
         </Col>
         <Col xs={grid.col4.xs} sm={grid.col4.sm} md={grid.col4.md} className=" d-flex justify-content-center">
-          <Button className="text-center" variant="danger" size="sm" onClick={() => dispatch(removeBook(id))}>
+          <Button className="text-center" variant="danger" size="sm" onClick={() => dispatch(removeBook(_id))}>
             <i className="fas fa-times " />
           </Button>
         </Col>

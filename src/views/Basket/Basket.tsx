@@ -34,7 +34,7 @@ const Basket = () => {
       return new Promise((resolve) =>
         resolve(
           bookstoreAPI
-            .get(`book/${element.id}`)
+            .get(`book/${element._id}`)
             .then((response) => {
               const { data } = response.data;
               const { quantity } = element;
@@ -61,8 +61,8 @@ const Basket = () => {
 
   const basketList = React.useMemo(() => {
     const list = basket.length
-      ? basket.map(({ title, quantity, price, id }) => {
-          return <BasketItem key={id} title={title} quantity={quantity} price={price} id={id} />;
+      ? basket.map(({ title, quantity, price, _id }) => {
+          return <BasketItem key={_id} title={title} quantity={quantity} price={price} _id={_id} />;
         })
       : null;
     return list;

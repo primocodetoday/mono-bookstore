@@ -12,10 +12,10 @@ export interface IRemoveBook {
   payload: IItem;
 }
 
-export const removeBook = (id: number): IRemoveBook => {
+export const removeBook = (_id: string): IRemoveBook => {
   return {
     type: ActionTypes.REMOVE_BOOK,
-    payload: { id },
+    payload: { _id },
   };
 };
 
@@ -24,9 +24,9 @@ export interface IAddBook {
   payload: IItem;
 }
 
-export const addBook = (id: number): IAddBook => ({
+export const addBook = (_id: string): IAddBook => ({
   type: ActionTypes.ADD_BOOK,
-  payload: { id, quantity: 1 },
+  payload: { _id, quantity: 1 },
 });
 
 export type Input = {

@@ -11,7 +11,7 @@ export interface ParamTypes {
 }
 
 export type Book = {
-  id: number;
+  _id: string;
   title: string;
   cover_url: string;
   author: string;
@@ -53,7 +53,7 @@ const Bookstore = () => {
 
   const booksArray = books.map((book) => {
     return (
-      <Col as="li" xs={12} md={6} lg={6} xl={4} className="mb-4" key={book.id}>
+      <Col as="li" xs={12} md={6} lg={6} xl={4} className="mb-4" key={book._id}>
         <BookCard book={book} />
       </Col>
     );

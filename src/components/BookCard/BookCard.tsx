@@ -14,7 +14,7 @@ export const BookCard = ({ book }: BookCardProps) => {
   const { dispatch } = useOrderContext();
   const [isAdded, setIsAdded] = React.useState(false);
   const { t } = useTranslation();
-  const { id, title, cover_url: coverUrl, author, pages } = book;
+  const { _id, title, cover_url: coverUrl, author, pages } = book;
 
   return (
     <Card className=" p-2 mx-auto d-flex align-items-stretch h-100">
@@ -40,7 +40,7 @@ export const BookCard = ({ book }: BookCardProps) => {
         className="ml-auto mt-auto mb-2 mr-2 text-uppercase font-weight-bolder"
         variant="outline-warning"
         onClick={() => {
-          dispatch(addBook(id));
+          dispatch(addBook(_id));
           setIsAdded(true);
         }}
       >

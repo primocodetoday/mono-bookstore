@@ -4,8 +4,15 @@
     "es6": true,
     "node": true
   },
-  "extends": ["airbnb-base", "plugin:import/recommended", "plugin:prettier/recommended"],
-  "plugins": ["import", "prettier"],
+  "extends": [
+    "airbnb-base",
+    "plugin:import/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "import",
+    "prettier"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -17,8 +24,22 @@
   "rules": {
     "prettier/prettier": "error",
     "no-console": "off",
-    "no-underscore-dangle": ["error", { "allow": ["__dirname", "__filename", "__express"] }],
-    "no-unused-vars": ["warn", { "args": "none" }],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "__dirname",
+          "__filename",
+          "__express"
+        ]
+      }
+    ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none"
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -26,6 +47,6 @@
         "js": "never"
       }
     ],
-    "import/newline-after-import" : "off"
+    "import/newline-after-import": "off"
   }
 }

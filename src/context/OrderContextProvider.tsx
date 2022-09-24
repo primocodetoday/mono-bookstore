@@ -8,9 +8,13 @@ export interface AppContext {
   dispatch: React.Dispatch<OrderActionTypes>;
 }
 
+type OrderContextProviderProps = {
+    children: React.ReactNode
+}
+
 export const OrderContext = React.createContext<AppContext | null>(null);
 
-export const OrderContextProvider: React.FC = ({ children, ...restProps }) => {
+export const OrderContextProvider = ({ children, ...restProps }:OrderContextProviderProps) => {
 	const [state, dispatch] = React.useReducer(orderReducer, initialOrderState, () => {
 		const storage = localStorage.getItem('order');
 		return storage ? JSON.parse(storage) : initialOrderState;

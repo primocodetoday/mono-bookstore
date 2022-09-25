@@ -1,0 +1,21 @@
+﻿version: '3.8'
+
+services:
+  frontend:
+    container_name: frontend
+    image: primoza/react/bookstore
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+      - backend
+
+  backend:
+    container_name: backend
+    image: primoza/bookstore-api
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:

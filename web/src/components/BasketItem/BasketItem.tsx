@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
-import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
-import { priceWithComma } from 'helpers/priceWithComma';
-import { removeBook } from 'context/actions';
-import { useOrderContext } from 'hooks/useOrderContext';
+import { basketArrayGrid as grid } from '@/constants/basketArrayGrid';
+import { priceWithComma } from '@/helpers/priceWithComma';
+import { removeBook } from '@/context/actions';
+import { useOrderContext } from '@/hooks/useOrderContext';
 
 export type BasketItemProps = {
   _id: string;

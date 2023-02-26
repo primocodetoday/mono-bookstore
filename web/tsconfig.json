@@ -25,13 +25,19 @@
         "incremental": true, // Enable incremental compilation by reading/writing information from prior compilations to a file on disk
         "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement
         "baseUrl": "./src" /* This is where all your code is*/,
-        "strictNullChecks": false
+        "strictNullChecks": false,
+        "paths": {
+            "@/*": [
+                "./*"
+            ]
+        },
     },
     "include": [
         "src/**/*"
     ],
     "exclude": [
         "node_modules",
-        "build"
+        "build",
+        "dist"
     ] // *** The files to not type check ***
 }

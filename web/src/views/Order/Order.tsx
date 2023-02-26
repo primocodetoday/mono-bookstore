@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import { Col } from 'react-bootstrap';
-import { Header, OrderForm } from 'components';
+import { Header, OrderForm } from '@/components';
 import { Link } from 'react-router-dom';
-import { ROUTES } from 'routes';
-import { useOrderContext } from 'hooks/useOrderContext';
+import { ROUTES } from '@/routes';
+import { useOrderContext } from '@/hooks/useOrderContext';
 import { useTranslation } from 'react-i18next';
 
 const Order = () => {

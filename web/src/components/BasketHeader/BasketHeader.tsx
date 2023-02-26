@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import { basketArrayGrid as grid } from 'constants/basketArrayGrid';
+import { basketArrayGrid as grid } from '@/constants/basketArrayGrid';
 
 export const BasketHeader = () => {
 	return (

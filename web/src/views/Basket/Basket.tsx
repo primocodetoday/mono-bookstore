@@ -1,14 +1,14 @@
 ﻿import * as React from 'react';
 import { Col, ListGroup, Button } from 'react-bootstrap';
-import { bookstoreAPI } from 'services/bookstoreAPI';
-import { Header, BasketHeader, BasketItem } from 'components';
+import { bookstoreAPI } from '@/services/bookstoreAPI';
+import { Header, BasketHeader, BasketItem } from '@/components';
 import { Link } from 'react-router-dom';
-import { priceWithComma } from 'helpers/priceWithComma';
-import { summaryBalance } from 'helpers/summaryBalance';
-import { ROUTES } from 'routes';
-import { BasketItemProps } from 'components/BasketItem/BasketItem';
-import { IItem } from 'context/reducers';
-import { useOrderContext } from 'hooks/useOrderContext';
+import { priceWithComma } from '@/helpers/priceWithComma';
+import { summaryBalance } from '@/helpers/summaryBalance';
+import { ROUTES } from '@/routes';
+import { BasketItemProps } from '@/components/BasketItem/BasketItem';
+import { IItem } from '@/context/reducers';
+import { useOrderContext } from '@/hooks/useOrderContext';
 import { useTranslation } from 'react-i18next';
 
 export interface BasketItemType extends BasketItemProps {

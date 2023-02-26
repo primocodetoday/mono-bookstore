@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import * as React from 'react';
-import { bookstoreAPI as api } from 'services/bookstoreAPI';
+import { bookstoreAPI as api } from '@/services/bookstoreAPI';
 import { Col, Row, Pagination } from 'react-bootstrap';
-import { BookCard, Loader, Header } from 'components';
+import { BookCard, Loader, Header } from '@/components';
 import { useParams, useHistory } from 'react-router-dom';
 import './styles/bookstoreStyles.scss';
 

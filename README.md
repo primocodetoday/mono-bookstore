@@ -8,10 +8,18 @@ It's a simple bookstore application created for the recruitment task and current
 
 ### Tech/framework used 🔧
 
-| Main Tech | React                             |
+#### FrontEnd
+
+| Main Tech | React                      |
 | --------- | --------------------------------- |
 | Addons    | Axios, Formik, Yup, Lodash |
 | Styles    | Bootstrap, React-Bootstrap        |
+
+#### Backend
+
+| Main Tech | Express                      |
+| --------- | --------------------------------- |
+| Addons    | Mongo, joi |
 
 ### Scripts
 
@@ -19,9 +27,3 @@ It's a simple bookstore application created for the recruitment task and current
 | ----------- | ---------------------- |
 | `npm start` | Open local server      |
 | `npm build` | Create optimized build |
-| `npm test`  | Call tests             |
-
-## API documentation
-
-Documentation in OpenAPI 3 format is available after running the mock server
-and going to the address: [localhost:3001/docs](http://localhost:3001/docs).

@@ -1,13 +1,13 @@
 ﻿import * as React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
-import { bookstoreAPI } from 'services/bookstoreAPI';
-import { SnackBar, Input } from 'components';
+import { bookstoreAPI } from '@/services/bookstoreAPI';
+import { SnackBar, Input } from '@/components';
 import { Link } from 'react-router-dom';
-import { resetOrder } from 'context/actions';
-import { orderSchema } from 'models/orderSchema';
-import { ROUTES } from 'routes';
-import { useOrderContext } from 'hooks/useOrderContext';
+import { resetOrder } from '@/context/actions';
+import { orderSchema } from '@/models/orderSchema';
+import { ROUTES } from '@/routes';
+import { useOrderContext } from '@/hooks/useOrderContext';
 import { useTranslation } from 'react-i18next';
 
 export type OrderFormProps = {

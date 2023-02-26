@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import { Button, Row, Col, Media, Card } from 'react-bootstrap';
-import { SnackBar } from 'components/SnackBar/SnackBar';
-import { addBook } from 'context/actions';
-import { Book } from 'views/Bookstore/Bookstore';
-import { useOrderContext } from 'hooks/useOrderContext';
+import { SnackBar } from '@/components/SnackBar/SnackBar';
+import { addBook } from '@/context/actions';
+import { Book } from '@/views/Bookstore/Bookstore';
+import { useOrderContext } from '@/hooks/useOrderContext';
 import { useTranslation } from 'react-i18next';
 
 export type BookCardProps = {

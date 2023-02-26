@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { OrderContext } from 'context/OrderContextProvider';
+import { OrderContext } from '@/context/OrderContextProvider';
 
 export const useOrderContext = () => {
 	const ctx = React.useContext(OrderContext);

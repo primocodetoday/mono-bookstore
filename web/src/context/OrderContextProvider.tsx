@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
-import { orderReducer, TState } from 'context/reducers';
+import { orderReducer, TState } from '@/context/reducers';
 import { initialOrderState } from './reducers';
-import { OrderActionTypes } from 'context/actions';
+import { OrderActionTypes } from '@/context/actions';
 
 export interface AppContext {
   readonly state: TState;

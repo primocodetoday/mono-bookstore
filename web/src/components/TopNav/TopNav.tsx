@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import { Navbar, Nav, Badge } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { LocaleSelector } from '../../components';
-import { ROUTES } from 'routes';
-import { useOrderContext } from 'hooks/useOrderContext';
+import { LocaleSelector } from '@/components';
+import { ROUTES } from '@/routes';
+import { useOrderContext } from '@/hooks/useOrderContext';
 import { useTranslation } from 'react-i18next';
 
 export const TopNav = () => {

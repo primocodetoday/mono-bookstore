@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { Form } from 'react-bootstrap';
-import { receiverChange } from 'context/actions';
-import { useOrderContext } from 'hooks/useOrderContext';
+import { receiverChange } from '@/context/actions';
+import { useOrderContext } from '@/hooks/useOrderContext';
 
 export type InputProps = {
   label: string;

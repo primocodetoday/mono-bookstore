@@ -1,47 +1,50 @@
 ﻿{
-    "shared": {
-        "shop": "Shop",
-        "basket": "Basket",
-        "404_info": "Oops, you must be lost",
-        "bookstore": "Bookstore",
-        "loading": "Loading"
-    },
-    "order": {
-        "first_name": "Name",
-        "last_name": "Name",
-        "city": "City",
-        "zip_code": "Postal Code",
-        "order_and_pay": "I order and pay",
-        "your_order_has_been_sent": "Your order has been shipped.",
-        "back": "Come back",
-        "to_bookstore": "to the store's website",
-        "no_items_info": "This page is not available to you until you add the item to your cart"
-    },
-    "snack": {
-        "order_has_been_sent": "The order has been sent",
-        "correct_order": "Correct the order"
-    },
-    "item": {
-        "authors": "Authors",
-        "page_number": "Number of pages",
-        "add_to_basket": "Add to basket",
-        "item_has_been_added": "The item has been added"
-    },
-    "yup": {
-        "enter_name": "Enter your name",
-        "name_to_short": "Your name is too short",
-        "name_to_long": "Your name is too long",
-        "enter_surname": "Enter your surname",
-        "surname_to_short": "Your last name is too long",
-        "surname_to_long": "Your last name is too long",
-        "enter_city": "Enter the name of the city",
-        "enter_zip_code": "Enter your zip code",
-        "invalid_zip_code": "Invalid zip code"
-    },
     "basket": {
         "no_item_2": "store",
         "no_items_1": "You haven't added anything to your cart yet. \nAdd items on the page",
-        "value": "The value of your purchases is",
-        "order": "I order"
+        "order": "I order",
+        "pcs": "pcs.",
+        "price": "Price",
+        "title": "Title",
+        "value": "The value of your purchases is"
+    },
+    "item": {
+        "add_to_basket": "Add to basket",
+        "authors": "Authors",
+        "item_has_been_added": "The item has been added",
+        "page_number": "Number of pages"
+    },
+    "order": {
+        "back": "Come back",
+        "city": "City",
+        "first_name": "Name",
+        "last_name": "Name",
+        "no_items_info": "This page is not available to you until you add the item to your cart",
+        "order_and_pay": "I order and pay",
+        "to_bookstore": "to the store's website",
+        "your_order_has_been_sent": "Your order has been shipped.",
+        "zip_code": "Postal Code"
+    },
+    "shared": {
+        "404_info": "Oops, you must be lost",
+        "basket": "Basket",
+        "bookstore": "Bookstore",
+        "loading": "Loading",
+        "shop": "Shop"
+    },
+    "snack": {
+        "correct_order": "Correct the order",
+        "order_has_been_sent": "The order has been sent"
+    },
+    "yup": {
+        "enter_city": "Enter the name of the city",
+        "enter_name": "Enter your name",
+        "enter_surname": "Enter your surname",
+        "enter_zip_code": "Enter your zip code",
+        "invalid_zip_code": "Invalid zip code",
+        "name_to_long": "Your name is too long",
+        "name_to_short": "Your name is too short",
+        "surname_to_long": "Your last name is too long",
+        "surname_to_short": "Your last name is too long"
     }
 }

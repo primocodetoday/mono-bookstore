@@ -1,0 +1,47 @@
+﻿{
+  "shared": {
+    "shop": "Sklep",
+    "basket": "Koszyk",
+    "404_info": "Ups, chyba się zgubiłeś",
+    "bookstore": "Księgarnia",
+    "loading": "Wczytywanie"
+  },
+  "order": {
+    "first_name": "Imię",
+    "last_name": "Nazwisko",
+    "city": "Miasto",
+    "zip_code": "Kod pocztowy",
+    "order_and_pay": "Zamawiam i płacę",
+    "your_order_has_been_sent": "Twoje zamówienie zostało wysłane.",
+    "back": "Wróc",
+    "to_bookstore": "na stronę sklepu",
+    "no_items_info": "Ta strona jest niedostępna dla Ciebie dopóki nie dodasz pozycji do koszyka"
+  },
+  "snack": {
+    "order_has_been_sent": "Zamówienie zostało wysłane",
+    "correct_order": "Popraw zamówienie"
+  },
+  "item": {
+    "authors": "Autorzy",
+    "page_number": "Liczba stron",
+    "add_to_basket": "Do koszyka",
+    "item_has_been_added": "Pozycja została dodana"
+  },
+  "yup": {
+    "enter_name": "Podaj imię",
+    "name_to_short": "Twoje imię jest zbyt krótkie",
+    "name_to_long": "Twoje imię jest zbyt długie",
+    "enter_surname": "Podaj nazwisko",
+    "surname_to_short": "Twoje nazwisko jest zbyt długie",
+    "surname_to_long": "Twoje nazwisko jest zbyt długie",
+    "enter_city": "Podaj nazwę miasta",
+    "enter_zip_code": "Podaj kod pocztowy",
+    "invalid_zip_code": "Kod pocztowy nieprawidłowy"
+  },
+  "basket": {
+    "no_item_2": "sklepu",
+    "no_items_1": "Nie dodałeś jeszcze nic do koszyka. Dodaj pozycje na stronie",
+    "value": "Wartość twoich zakupów to",
+    "order": "Zamawiam"
+  }
+}

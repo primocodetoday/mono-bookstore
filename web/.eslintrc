@@ -1,0 +1,54 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "indent": [
+            2,
+            "tab",
+            {
+                "SwitchCase": 1,
+                "VariableDeclarator": 1
+            }
+        ],
+        "no-tabs": 0,
+        "react/prop-types": 0,
+        "react/jsx-indent": [
+            2,
+            "tab"
+        ],
+        "react/jsx-indent-props": [
+            2,
+            "tab"
+        ],
+        "react/jsx-first-prop-new-line": [
+            0,
+            "multiline-multiprop"
+        ],
+        "react/jsx-max-props-per-line": [
+            1,
+            {
+                "maximum": 1
+            }
+        ]
+    }
+}

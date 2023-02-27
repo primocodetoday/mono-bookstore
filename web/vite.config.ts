@@ -8,7 +8,10 @@ export default ({mode}) => {
 	return defineConfig({
 		plugins: [react()],
 		server:{
-			port: parseInt(process.env.VITE_DEV_PORT)
+			port: parseInt(process.env.VITE_DEV_PORT || '')
+		},
+		preview:{
+			port: parseInt(process.env.VITE_DEV_PORT || '')
 		},
 		resolve:{
 			alias:{

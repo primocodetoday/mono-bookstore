@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { Col, ListGroup, Button } from 'react-bootstrap';
-import { bookstoreAPI } from '@/services/bookstoreAPI';
+import BookstoreService from '@/services/BookstoreService'
 import { Header, BasketHeader, BasketItem } from '@/components';
 import { Link } from 'react-router-dom';
 import { priceWithComma } from '@/helpers/priceWithComma';
@@ -33,10 +33,9 @@ const Basket = () => {
 		const shot = (element: IItem): Promise<BasketItemType> => {
 			return new Promise((resolve) =>
 				resolve(
-					bookstoreAPI
-						.get(`books/${element._id}`)
-						.then((response) => {
-							const { data } = response;
+					BookstoreService
+						.getOne(element._id)
+						.then((data) => {
 							const { quantity } = element;
 							return { ...data, quantity };
 						})

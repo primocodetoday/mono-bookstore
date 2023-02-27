@@ -1,5 +1,5 @@
 {
-    "name": "front",
+    "name": "web-bookstore",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -21,7 +21,7 @@
         "yup": "^0.29.3"
     },
     "scripts": {
-        "start": "vite",
+        "dev": "vite",
         "build": "vite build",
         "serve": "vite preview"
     },

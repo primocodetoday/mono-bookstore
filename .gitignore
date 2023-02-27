@@ -3,6 +3,10 @@
 .DS_Store
 .vscode
 
+#lerna
+node_modules
+lerna-debug.log
+
 #api
 
 

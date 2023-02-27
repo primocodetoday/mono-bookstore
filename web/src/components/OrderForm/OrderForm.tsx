@@ -24,7 +24,7 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
 		e.preventDefault();
 		function orderBooks() {
 			bookstoreAPI
-				.post('order', state)
+				.post('orders', state)
 				.then((response) => {
 					setOrderPlaced(true);
 					setBackPass(true);

@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
-import { bookstoreAPI } from '@/services/bookstoreAPI';
+import BookstoreService from '@/services/BookstoreService'
 import { SnackBar, Input } from '@/components';
 import { Link } from 'react-router-dom';
 import { resetOrder } from '@/context/actions';
@@ -23,14 +23,12 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		function orderBooks() {
-			bookstoreAPI
-				.post('orders', state)
-				.then((response) => {
+			BookstoreService
+				.order(state)
+				.then(() => {
 					setOrderPlaced(true);
 					setBackPass(true);
 					dispatch(resetOrder());
-					// eslint-disable-next-line no-console
-					console.log('Order send', response.status);
 				})
 				.catch((err) => {
 					// eslint-disable-next-line no-console
@@ -102,10 +100,18 @@ export const OrderForm = ({ setOrderPlaced }: OrderFormProps) => {
 					)}
 				</Formik>
 			) : (
-				<p className="text-success text-uppercase font-weight-bolder text-center">
-					{t('order.your_order_has_been_sent')} <Link to={ROUTES.SHOP}>{t('order.back')}</Link>
-					{t('order.to_bookstore')}
-				</p>
+				<div className="text-success text-uppercase font-weight-bolder text-center">
+					<p className="mb-2">
+						{t('order.your_order_has_been_sent')}
+					</p>
+					<p>
+						<Link className="mr-1"
+							to={ROUTES.SHOP}>{t('order.back')}</Link>
+						{t('order.to_bookstore')}
+					</p>
+
+				</div>
+
 			)}
 			<SnackBar toast={backEndPass}
 				setToast={setBackPass}

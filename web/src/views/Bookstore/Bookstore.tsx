@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import * as React from 'react';
-import { bookstoreAPI as api } from '@/services/bookstoreAPI';
+
+import BookstoreService from '@/services/BookstoreService'
 import { Col, Row, Pagination } from 'react-bootstrap';
 import { BookCard, Loader, Header } from '@/components';
 import { useParams, useHistory } from 'react-router-dom';
@@ -26,22 +27,21 @@ const Bookstore = () => {
 	React.useEffect(() => {
 		// clear state before update
 		setBooks(() => []);
+
 		function fetchBooks() {
-			api
-				.get(`books?page=${page}`)
-				.then((response) => {
-					const { data } = response.data;
+			BookstoreService
+				.getAll(+page)
+				.then(({data}) => {
 					setBooks((prevState) => {
 						return [...prevState, ...data];
 					});
-					console.log('Data received', response.status);
 				})
 				.catch((err) => console.error('Server Error', err));
 		}
 		// simulate delay
-		setTimeout(() => {
-			fetchBooks();
-		}, 250);
+
+		fetchBooks();
+
 	}, [page]);
 
 	const history = useHistory();

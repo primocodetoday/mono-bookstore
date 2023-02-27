@@ -6,6 +6,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
 
+mongoose.set('strictQuery', true);
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));

@@ -1,52 +1,59 @@
 {
-  "env": {
-    "commonjs": true,
-    "es6": true,
-    "node": true
-  },
-  "extends": [
-    "airbnb-base",
-    "plugin:import/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "import",
-    "prettier"
-  ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-  "rules": {
-    "prettier/prettier": "error",
-    "no-console": "off",
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allow": [
-          "__dirname",
-          "__filename",
-          "__express"
-        ]
-      }
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:import/recommended",
+        "plugin:prettier/recommended"
     ],
-    "no-unused-vars": [
-      "warn",
-      {
-        "args": "none"
-      }
+    "plugins": [
+        "import",
+        "prettier"
     ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never"
-      }
-    ],
-    "import/newline-after-import": "off"
-  }
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": [
+            "warn",
+            {
+                "singleQuote": true,
+                "endOfLine": "auto",
+                "tabWidth": 4
+            }
+        ],
+        "no-console": "off",
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": [
+                    "__dirname",
+                    "__filename",
+                    "__express"
+                ]
+            }
+        ],
+        "no-unused-vars": [
+            "warn",
+            {
+                "args": "none"
+            }
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never"
+            }
+        ],
+        "import/newline-after-import": "off"
+    }
 }

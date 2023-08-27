@@ -2,9 +2,10 @@
   "name": "mono-bookstore",
   "private": true,
   "workspaces": [
-    "api", "web"
+    "api",
+    "web"
   ],
   "devDependencies": {
-    "lerna": "^6.5.1"
+    "lerna": "^7.1.5"
   }
 }

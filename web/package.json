@@ -1,64 +1,64 @@
 {
-    "name": "web-bookstore",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@vitejs/plugin-react": "^3.1.0",
-        "axios": "^0.21.0",
-        "bootstrap": "^4.6.0",
-        "formik": "^2.2.3",
-        "i18next": "^20.3.2",
-        "i18next-browser-languagedetector": "^6.1.2",
-        "i18next-http-backend": "^1.2.6",
-        "react": "^18.2.0",
-        "react-bootstrap": "^1.6.1",
-        "react-dom": "^18.2.0",
-        "react-i18next": "^11.11.0",
-        "react-router-dom": "^5.2.0",
-        "sass": "^1.54.0",
-        "typescript": "^4.8.3",
-        "vite": "^4.1.5",
-        "yup": "^0.29.3"
-    },
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "serve": "vite preview"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@types/jest": "^27.5.2",
-        "@types/node": "^16.11.60",
-        "@types/react": "^18.0.21",
-        "@types/react-bootstrap": "^0.32.24",
-        "@types/react-dom": "^18.0.6",
-        "@types/react-router-dom": "^5.1.6",
-        "@types/yup": "^0.29.9",
-        "@typescript-eslint/eslint-plugin": "^5.30.0",
-        "@typescript-eslint/parser": "^5.30.0",
-        "eslint": "^8.18.0",
-        "eslint-config-standard": "^17.0.0",
-        "eslint-plugin-import": "^2.27.5",
-        "eslint-plugin-n": "^15.2.3",
-        "eslint-plugin-promise": "^6.0.0",
-        "eslint-plugin-react": "^7.30.1",
-        "prettier": "^2.7.1"
-    }
+  "name": "web-bookstore",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.0.4",
+    "axios": "1.5.0",
+    "bootstrap": "5.3.1",
+    "formik": "^2.4.3",
+    "i18next": "^23.4.6",
+    "i18next-browser-languagedetector": "^7.1.0",
+    "i18next-http-backend": "^2.2.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.2.0",
+    "react-router-dom": "^6.15.0",
+    "sass": "^1.66.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "yup": "^1.2.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.4",
+    "@types/node": "^20.5.6",
+    "@types/react": "^18.2.21",
+    "@types/react-bootstrap": "^0.32.32",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/yup": "^0.32.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.48.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.0.2"
+  }
 }

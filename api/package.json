@@ -19,7 +19,7 @@
     "joi": "^17.10.0",
     "joigoose": "^8.0.2",
     "jsonwebtoken": "^9.0.1",
-    "mongodb": "^5.8.1",
+    "mongodb": "^4.17.0",
     "mongoose": "^7.4.5",
     "morgan": "^1.10.0"
   },
